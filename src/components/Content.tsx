@@ -1,6 +1,5 @@
 import InputLabel from "./InputLabel";
 import StatusView from "./StatusView";
-import { techData } from "../data/techData";
 import {
 	useNextValue,
 	useOptionValue,
@@ -17,9 +16,11 @@ const Content = () => {
 	const { fetchData,isloading,isError } = useFetch("http://localhost:2024/techData");
 
 	useEffect(() => {
-		const randomValue = Math.floor(Math.random() * techData.length);
-		setRandomValueNumber(randomValue);
+		const randomValue = Math.floor(Math.random() * 85);
+		setRandomValueNumber(randomValue)
 	}, []);
+
+	
 
 	const questAns = fetchData? fetchData[randomValueNumber]: null
 
