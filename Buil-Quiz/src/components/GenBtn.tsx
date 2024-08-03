@@ -1,24 +1,24 @@
 import { forwardRef } from "react";
-import { useOptionValue, useGeneralState } from "../customHooks/customHooks";
+// import { useOptionValue, useGeneralContext } from "../customHooks/customHooks";
 
 type clickHandlerType = {
-	handleBtnSubmitClick?: (
+	handleBtnClick?: (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => void;
+	name: string;
+	classes?: string;
 };
 
 const GenBtn = forwardRef<HTMLButtonElement, clickHandlerType>((props, ref) => {
-	const { optionValue } = useOptionValue();
-  
+	// const { optionValue } = useOptionValue();
+
 	return (
 		<>
 			<button
-				className="gen-btn"
-				onClick={(e) =>
-					props.handleBtnSubmitClick ? props.handleBtnSubmitClick(e) : null
-				}
+				className={`gen-btn ${props.classes}`}
+				onClick={(e) => (props.handleBtnClick ? props.handleBtnClick(e) : null)}
 				ref={ref}>
-				Submit
+				{props.name}
 			</button>
 		</>
 	);

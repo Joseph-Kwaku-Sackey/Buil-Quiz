@@ -59,6 +59,30 @@ main {
 
 }
 
+.loader-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100dvh;
+	position: absolute;
+}
+
+.loader-container__loader {
+	width: 30px;
+	height: 30px;
+	border: dotted var(--seablue-accent) 9px;
+	border-radius: 15px;
+	border-color: rgb(0, 255, 64) rgb(33, 105, 249);
+	animation: rotate .5s linear infinite;
+}
+@keyframes rotate {
+	to {
+		rotate: 360deg;
+	}
+}
+
+
 
 /* BgAnimObjects Comp*/
 .background-object-animation-container {
@@ -182,6 +206,17 @@ main {
 	transition: filter, box-shadow 0.3s linear;
 	font-size: var(--medium-font);
 }
+
+.gen-btn-next{
+  padding: .6em 1em;
+  color: var(--seablue-accent);
+  background-color: var(--nextBtn-bgc);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2em;
+}
+
 .gen-btn:hover {
 	-webkit-filter: brightness(1.2);
 	filter: brightness(1.2);

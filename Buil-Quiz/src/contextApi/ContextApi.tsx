@@ -1,4 +1,4 @@
-import { ReactNode, useState, useReducer, Children } from "react";
+import { ReactNode, useState, useReducer } from "react";
 import { OptionValueContext, NextValueContext, GenContext } from "./CreateContext";
 import { reducer, initialState } from "../reducer/reducer";
 
@@ -28,7 +28,7 @@ export const NextValueContextProvider = ({ children }: childrenType) => {
 	);
 };
 
-export const NoSelectionProvider = ({ children }: childrenType) => {
+export const GeneralProvider = ({ children }: childrenType) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
 	return (

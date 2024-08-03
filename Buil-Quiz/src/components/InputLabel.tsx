@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useOptionValue,useGeneralState } from "../customHooks/customHooks";
+import { useOptionValue,useGeneralContext } from "../customHooks/customHooks";
 
 type inputInt = {
 	name: string;
@@ -9,7 +9,7 @@ type inputInt = {
 const InputLabel = (props: inputInt) => {
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const { setOptionValue } = useOptionValue();
-  const {state,dispatch} = useGeneralState()
+  const {dispatch} = useGeneralContext()
 
 	const handleSpanClick = () => {
 		inputRef.current!.checked = true;

@@ -2,22 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import "./global.css";
-import "./components/ComponentCSS.css";
+import "./styles/global.css";
+import "./styles/ComponentCSS.css";
+
+
 import {
 	OptionValueContextProvider,
 	NextValueContextProvider,
-	NoSelectionProvider,
+	GeneralProvider,
 } from "./contextApi/ContextApi.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<NoSelectionProvider>
+		<GeneralProvider>
 			<NextValueContextProvider>
 				<OptionValueContextProvider>
 					<App />
 				</OptionValueContextProvider>
 			</NextValueContextProvider>
-		</NoSelectionProvider>
+		</GeneralProvider>
 	</React.StrictMode>
 );

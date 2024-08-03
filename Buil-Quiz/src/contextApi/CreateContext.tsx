@@ -1,5 +1,5 @@
 import { SetStateAction, createContext } from "react";
-import { actionType, stateType } from "../reducer/reducer";
+import { actionMainType, stateType } from "../reducer/reducer";
 
 //contextApi for option value
 interface checkedValueInter {
@@ -24,6 +24,6 @@ export const NextValueContext = createContext<nextQuestType>(
 //contextApi for general use
 type GenVarType = {
 	state: stateType;
-	dispatch: React.Dispatch<actionType>;
+	dispatch: React.Dispatch<actionMainType>;
 };
-export const GenContext = createContext<GenVarType>({}as GenVarType);
+export const GenContext = createContext<GenVarType>({} as GenVarType);

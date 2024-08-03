@@ -1,0 +1,13 @@
+.categoryButton {
+	background-color: transparent;
+	border: solid white 1px;
+	border-radius: 50px;
+	color: white;
+	padding: 1em 2em;
+	transition: all 0.3s linear;
+}
+
+.categoryButton:hover {
+	color: black;
+	background-color: white;
+}
