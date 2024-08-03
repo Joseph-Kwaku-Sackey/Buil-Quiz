@@ -1,0 +1,95 @@
+
+
+
+/* submit button */
+@keyframes shake {
+	0% {
+		transform: translateX(-10px);
+		background-color: rgb(140, 0, 0);
+	}
+
+	20% {
+		transform: translateX(10px);
+	}
+
+	40% {
+		transform: translateX(-10px);
+	}
+	60% {
+		transform: translateX(10px);
+	}
+	80% {
+		transform: translateX(-10px);
+	}
+
+	100% {
+		transform: translateX(0);
+		background-color: rgb(140, 0, 0);
+	}
+}
+
+/* status icon */
+@keyframes zoom-in-out {
+	0%{
+		scale: 0;
+	}
+	50%{
+		scale: 1.5;
+	}
+	100%{
+		scale: .9;
+	}
+}
+
+/* loader */
+@keyframes rotate {
+	to {
+		rotate: 360deg;
+	}
+}
+
+/* background animation */
+/* @keyframes movement {
+	0% {
+		top: 10dvh;
+		left: 20%;
+	}
+	25% {
+		top: 10dvh;
+		left: 60%;
+	}
+	50% {
+		top: 80dvh;
+		left: 60%;
+	}
+	75% {
+		top: 80dvh;
+		left: 20%;
+	}
+	100% {
+		top: 10dvh;
+		left: 20%;
+	}
+}
+@keyframes movement-opposite {
+	0% {
+		bottom: 10dvh;
+		right: 20%;
+	}
+	25% {
+		bottom: 10dvh;
+		right: 60%;
+	}
+	50% {
+		bottom: 80dvh;
+		right: 60%;
+	}
+	75% {
+		bottom: 80dvh;
+		right: 20%;
+	}
+	100% {
+		bottom: 10dvh;
+		right: 20%;
+	}
+} */

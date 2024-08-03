@@ -1,0 +1,206 @@
+/* Content Comp */
+.main-container {
+	display: flex;
+	justify-content: center;
+	align-items: start;
+	position: relative;
+	padding-top: 7em;
+}
+
+.quiz-container {
+	display: flex;
+	flex-direction: column;
+	background-color: hsla(0, 0%, 29%, 0.178);
+	color: hsla(0, 0%, 80%);
+	padding: 1.6em;
+	border-radius: 20px;
+	row-gap: 1em;
+	box-shadow: 4px 5px 20px rgba(0, 0, 0, 0.296);
+	transition: all 0.4s ease-out;
+}
+
+
+.quiz-container__question {
+	font-size: var(--large-font);
+	font-weight: 700;
+}
+
+.error-message {
+	color: rgb(255, 87, 87);
+	font-size: var(--medium-font);
+}
+
+/* BgAnimObjects Comp*/
+.background-object-animation-container {
+	overflow: hidden;
+	width: 100%;
+	position: absolute;
+	height: 90vh;
+	filter: blur(300px);
+	opacity: 0.5;
+	z-index: -30;
+}
+
+.background-object-animate1,
+.background-object-animate2 {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	background: linear-gradient(rgba(0, 111, 163), rgba(163, 0, 141));
+	animation: movement 50s linear alternate infinite;
+}
+
+/* homePage */
+.home-container {
+	-webkit-backdrop-filter: blur(50px);
+	backdrop-filter: blur(50px);
+}
+
+/* InputLabel Comp */
+.input-label-container__input-option {
+	display: none;
+}
+.input-label-container {
+	display: flex;
+	align-items: center;
+	position: relative;
+	font-size: var(--default-font);
+	margin-bottom: 1.5em;
+	gap: 2em;
+}
+.input-label-container__input-option:checked + .input-custom::before {
+	content: "";
+	position: absolute;
+	top: 22%;
+	left: 22%;
+	width: 13px;
+	height: 13px;
+	border-radius: 20px;
+	background: var(--mainGradient);
+}
+
+/* StatusView Comp */
+.status-view-container__level-digit {
+	position: absolute;
+	top: 0.5em;
+	left: 0.9em;
+	font-size: var(--small-font);
+}
+
+.status-view-container {
+	min-height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: hsl(0, 0%, 5%);
+	border-radius: 5px;
+	position: relative;
+	overflow: clip;
+}
+
+.status-icon-animate {
+	animation: zoom-in-out 0.4s ease-out;
+}
+
+.status-view-container__level-loader {
+	position: absolute;
+	width: 100%;
+	background: linear-gradient(45deg, rgb(62, 62, 228), rgb(134, 29, 62));
+	height: 3px;
+	top: 4.8em;
+	transform: scaleX(0);
+	transform-origin: left;
+	border-radius: 50px;
+}
+.status-view-container__level-loader-complete {
+	transform: scaleX(1);
+	opacity: 0;
+}
+
+/* GenBtn Comp */
+:root {
+	--btnBgc: rgb(26, 27, 23);
+}
+.gen-btn {
+	background: linear-gradient(45deg, rgb(27, 29, 30), rgb(49, 51, 53));
+	color: rgb(0, 192, 213);
+	border: none;
+	-webkit-filter: brightness(1.1);
+	filter: brightness(1.1);
+	box-shadow: 1px 3px 4px var(--drop-shadow);
+	transition: filter, box-shadow 0.3s linear;
+	font-size: var(--genBtn-font);
+}
+.gen-btn:hover {
+	-webkit-filter: brightness(1.3);
+	filter: brightness(1.3);
+	box-shadow: 0px 0px 0px var(--drop-shadow);
+}
+.gen-btn-anim {
+	animation: shake 0.1s linear forwards;
+}
+
+.gen-btn-next-type-color {
+	color: var(--seablue-accent);
+	background-color: var(--btnBgc);
+}
+/* .gen-btn-solution-type-color {
+	color: rgb(0, 192, 213);
+	background-color: var(--btnBgc);
+} */
+
+/* category comp */
+.categoryButton {
+	--off-white-yellowish: rgb(255, 254, 235);
+
+	background-color: hsl(212, 14%, 10.5%);
+	border: solid hsl(212, 14%, 20%) 1px;
+	border-radius: 50px;
+	color: hsl(212, 14%, 68%);
+	transition: all 0.3s linear;
+	font-size: var(--genBtn-font);
+}
+.categoryButton:hover {
+	/* color: black; */
+	background-color: hsl(212, 14%, 17%);
+}
+
+/* custom scrollbar */
+.category-container,
+.solution-container {
+	scroll-behavior: smooth;
+}
+.solution-container::-webkit-scrollbar,
+.category-container::-webkit-scrollbar {
+	width: 4px;
+	background-color: transparent;
+	border-radius: 20px;
+}
+.solution-container::-webkit-scrollbar-thumb,
+.category-container::-webkit-scrollbar-thumb {
+	border-radius: 20px;
+	background-color: rgb(41, 41, 41, 0.7);
+}
+
+.solution-container::-webkit-scrollbar-corner,
+.category-container::-webkit-scrollbar-corner,
+.solution-container::-webkit-scrollbar-button,
+.category-container::-webkit-scrollbar-button {
+	background-color: transparent;
+}
+
+/* loader compo */
+.loader{
+	opacity: .4;
+	animation: fade-in-out .5s infinite alternate;
+}
+
+@keyframes fade-in-out {
+	from{
+		opacity: .15
+	}
+	to{
+		opacity: .4;
+	}
+}

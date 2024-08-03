@@ -1,0 +1,661 @@
+[
+	{
+		"id": 1,
+		"question": "What is the primary purpose of fiscal policy?",
+		"options": [
+			"Control inflation",
+			"Increase government revenue",
+			"Reduce unemployment",
+			"Regulate trade"
+		],
+		"answer": "Control inflation"
+	},
+	{
+		"id": 2,
+		"question": "Which of the following is a function of money?",
+		"options": [
+			"Store of value",
+			"Unit of account",
+			"Medium of exchange",
+			"All of the above"
+		],
+		"answer": "All of the above"
+	},
+	{
+		"id": 3,
+		"question": "What does GDP stand for?",
+		"options": [
+			"Gross Domestic Product",
+			"General Domestic Product",
+			"Gross Development Product",
+			"General Development Product"
+		],
+		"answer": "Gross Domestic Product"
+	},
+	{
+		"id": 4,
+		"question": "What is the main goal of monetary policy?",
+		"options": [
+			"Control inflation",
+			"Increase tax revenue",
+			"Reduce government spending",
+			"Increase exports"
+		],
+		"answer": "Control inflation"
+	},
+	{
+		"id": 5,
+		"question": "Which of the following is considered a leading economic indicator?",
+		"options": [
+			"Unemployment rate",
+			"Stock market performance",
+			"Consumer price index",
+			"Interest rates"
+		],
+		"answer": "Stock market performance"
+	},
+	{
+		"id": 6,
+		"question": "What is inflation?",
+		"options": [
+			"Decrease in prices",
+			"Increase in prices",
+			"Stability of prices",
+			"None of the above"
+		],
+		"answer": "Increase in prices"
+	},
+	{
+		"id": 7,
+		"question": "Which type of unemployment occurs when workers are temporarily laid off?",
+		"options": [
+			"Structural unemployment",
+			"Frictional unemployment",
+			"Cyclical unemployment",
+			"Seasonal unemployment"
+		],
+		"answer": "Cyclical unemployment"
+	},
+	{
+		"id": 8,
+		"question": "What is the term for the total value of goods and services produced in a country in a year?",
+		"options": [
+			"Net National Product",
+			"Gross National Product",
+			"Gross Domestic Product",
+			"National Income"
+		],
+		"answer": "Gross Domestic Product"
+	},
+	{
+		"id": 9,
+		"question": "What is a recession?",
+		"options": [
+			"A period of economic growth",
+			"A period of economic decline",
+			"A period of inflation",
+			"A period of deflation"
+		],
+		"answer": "A period of economic decline"
+	},
+	{
+		"id": 10,
+		"question": "Which of the following is a tool of monetary policy?",
+		"options": [
+			"Taxation",
+			"Government spending",
+			"Open market operations",
+			"Public works"
+		],
+		"answer": "Open market operations"
+	},
+	{
+		"id": 11,
+		"question": "What does the term 'opportunity cost' refer to?",
+		"options": [
+			"The cost of a missed opportunity",
+			"The cost of the next best alternative foregone",
+			"The total cost of production",
+			"The cost of raw materials"
+		],
+		"answer": "The cost of the next best alternative foregone"
+	},
+	{
+		"id": 12,
+		"question": "What is the primary goal of economic growth?",
+		"options": [
+			"Increase in employment",
+			"Increase in production",
+			"Increase in consumption",
+			"Increase in savings"
+		],
+		"answer": "Increase in production"
+	},
+	{
+		"id": 13,
+		"question": "What is the term for a market structure with many firms competing?",
+		"options": [
+			"Monopoly",
+			"Oligopoly",
+			"Perfect competition",
+			"Monopolistic competition"
+		],
+		"answer": "Perfect competition"
+	},
+	{
+		"id": 14,
+		"question": "Which of the following is a characteristic of a monopoly?",
+		"options": [
+			"Many sellers",
+			"Free entry and exit",
+			"Single seller",
+			"Product differentiation"
+		],
+		"answer": "Single seller"
+	},
+	{
+		"id": 15,
+		"question": "What is the main purpose of tariffs?",
+		"options": [
+			"To promote free trade",
+			"To protect domestic industries",
+			"To increase imports",
+			"To reduce exports"
+		],
+		"answer": "To protect domestic industries"
+	},
+	{
+		"id": 16,
+		"question": "Which economic system is characterized by private ownership of resources?",
+		"options": ["Socialism", "Communism", "Capitalism", "Feudalism"],
+		"answer": "Capitalism"
+	},
+	{
+		"id": 17,
+		"question": "What does the term 'balance of trade' refer to?",
+		"options": [
+			"The difference between exports and imports",
+			"The total value of exports",
+			"The total value of imports",
+			"The trade agreements between countries"
+		],
+		"answer": "The difference between exports and imports"
+	},
+	{
+		"id": 18,
+		"question": "What is a budget deficit?",
+		"options": [
+			"When government spending exceeds revenue",
+			"When government revenue exceeds spending",
+			"When there is no change in budget",
+			"When the budget is balanced"
+		],
+		"answer": "When government spending exceeds revenue"
+	},
+	{
+		"id": 19,
+		"question": "Which of the following is NOT a factor of production?",
+		"options": ["Land", "Labor", "Capital", "Money"],
+		"answer": "Money"
+	},
+	{
+		"id": 20,
+		"question": "What is the primary function of the World Bank?",
+		"options": [
+			"To provide loans for development projects",
+			"To regulate international trade",
+			"To promote free trade",
+			"To monitor inflation rates"
+		],
+		"answer": "To provide loans for development projects"
+	},
+	{
+		"id": 21,
+		"question": "What is the term for a prolonged period of high unemployment?",
+		"options": ["Recession", "Depression", "Boom", "Expansion"],
+		"answer": "Depression"
+	},
+	{
+		"id": 22,
+		"question": "Which of the following is a disadvantage of inflation?",
+		"options": [
+			"Increased purchasing power",
+			"Decreased cost of living",
+			"Uncertainty in the economy",
+			"Stable prices"
+		],
+		"answer": "Uncertainty in the economy"
+	},
+	{
+		"id": 23,
+		"question": "What does the Consumer Price Index (CPI) measure?",
+		"options": [
+			"The average change in prices over time",
+			"The average income of consumers",
+			"The total production of goods",
+			"The level of unemployment"
+		],
+		"answer": "The average change in prices over time"
+	},
+	{
+		"id": 24,
+		"question": "Which of the following is a characteristic of oligopoly?",
+		"options": [
+			"Many firms",
+			"Identical products",
+			"Interdependent pricing",
+			"Free entry and exit"
+		],
+		"answer": "Interdependent pricing"
+	},
+	{
+		"id": 25,
+		"question": "What is the primary goal of a firm in a capitalist economy?",
+		"options": [
+			"Maximize profits",
+			"Minimize costs",
+			"Provide jobs",
+			"Serve the community"
+		],
+		"answer": "Maximize profits"
+	},
+	{
+		"id": 26,
+		"question": "What is the term for the total amount of money a government owes?",
+		"options": [
+			"Budget deficit",
+			"National debt",
+			"Fiscal surplus",
+			"Public expenditure"
+		],
+		"answer": "National debt"
+	},
+	{
+		"id": 27,
+		"question": "Which of the following is a type of market failure?",
+		"options": [
+			"Externalities",
+			"Perfect competition",
+			"Monopoly",
+			"All of the above"
+		],
+		"answer": "Externalities"
+	},
+	{
+		"id": 28,
+		"question": "What is the term for the price level at which quantity supplied equals quantity demanded?",
+		"options": [
+			"Equilibrium price",
+			"Market price",
+			"Ceiling price",
+			"Floor price"
+		],
+		"answer": "Equilibrium price"
+	},
+	{
+		"id": 29,
+		"question": "What is the primary purpose of antitrust laws?",
+		"options": [
+			"To promote competition",
+			"To regulate prices",
+			"To control inflation",
+			"To protect consumers"
+		],
+		"answer": "To promote competition"
+	},
+	{
+		"id": 30,
+		"question": "What does 'liquidity' refer to in finance?",
+		"options": [
+			"The ease of converting assets into cash",
+			"The amount of debt a company has",
+			"The total revenue of a company",
+			"The profitability of a company"
+		],
+		"answer": "The ease of converting assets into cash"
+	},
+	{
+		"id": 31,
+		"question": "What is the main goal of a central bank?",
+		"options": [
+			"Control inflation",
+			"Regulate trade",
+			"Increase government spending",
+			"Reduce taxes"
+		],
+		"answer": "Control inflation"
+	},
+	{
+		"id": 32,
+		"question": "Which of the following is a component of aggregate demand?",
+		"options": [
+			"Consumer spending",
+			"Investment",
+			"Government spending",
+			"All of the above"
+		],
+		"answer": "All of the above"
+	},
+	{
+		"id": 33,
+		"question": "What is the term for the practice of buying and selling goods and services across international borders?",
+		"options": [
+			"Domestic trade",
+			"International trade",
+			"Local trade",
+			"Regional trade"
+		],
+		"answer": "International trade"
+	},
+	{
+		"id": 34,
+		"question": "What is the primary source of government revenue?",
+		"options": ["Taxes", "Loans", "Investments", "Donations"],
+		"answer": "Taxes"
+	},
+	{
+		"id": 35,
+		"question": "Which of the following is a consequence of high inflation?",
+		"options": [
+			"Increased purchasing power",
+			"Decreased cost of living",
+			"Erosion of savings",
+			"Stable prices"
+		],
+		"answer": "Erosion of savings"
+	},
+	{
+		"id": 36,
+		"question": "What is the term for a situation where the supply of a good exceeds its demand?",
+		"options": ["Surplus", "Shortage", "Equilibrium", "Deficit"],
+		"answer": "Surplus"
+	},
+	{
+		"id": 37,
+		"question": "Which of the following is a method of measuring economic growth?",
+		"options": [
+			"GDP growth rate",
+			"Unemployment rate",
+			"Inflation rate",
+			"Interest rate"
+		],
+		"answer": "GDP growth rate"
+	},
+	{
+		"id": 38,
+		"question": "What is the term for the amount of goods and services produced per unit of labor?",
+		"options": ["Productivity", "Efficiency", "Output", "Yield"],
+		"answer": "Productivity"
+	},
+	{
+		"id": 39,
+		"question": "Which of the following is a characteristic of a command economy?",
+		"options": [
+			"Private ownership",
+			"Market-driven",
+			"Central planning",
+			"Competition"
+		],
+		"answer": "Central planning"
+	},
+	{
+		"id": 40,
+		"question": "What is the term for the rate at which prices for goods and services rise?",
+		"options": ["Deflation", "Inflation", "Stagnation", "Recession"],
+		"answer": "Inflation"
+	},
+	{
+		"id": 41,
+		"question": "Which of the following is an example of a public good?",
+		"options": [
+			"National defense",
+			"Private schools",
+			"Toll roads",
+			"Restaurants"
+		],
+		"answer": "National defense"
+	},
+	{
+		"id": 42,
+		"question": "What is the term for the total value of all assets owned by an individual or company?",
+		"options": ["Net worth", "Equity", "Liabilities", "Assets"],
+		"answer": "Net worth"
+	},
+	{
+		"id": 43,
+		"question": "What is the primary function of the International Monetary Fund (IMF)?",
+		"options": [
+			"To promote international trade",
+			"To provide financial assistance",
+			"To regulate exchange rates",
+			"To monitor inflation"
+		],
+		"answer": "To provide financial assistance"
+	},
+	{
+		"id": 44,
+		"question": "Which of the following is a type of economic system where the government makes all decisions?",
+		"options": [
+			"Market economy",
+			"Mixed economy",
+			"Command economy",
+			"Traditional economy"
+		],
+		"answer": "Command economy"
+	},
+	{
+		"id": 45,
+		"question": "What is the term for the economic theory that advocates for minimal government intervention?",
+		"options": [
+			"Keynesian economics",
+			"Monetarism",
+			"Laissez-faire",
+			"Supply-side economics"
+		],
+		"answer": "Laissez-faire"
+	},
+	{
+		"id": 46,
+		"question": "What does the term 'subsidy' refer to?",
+		"options": [
+			"A tax on imports",
+			"A government payment to support a business",
+			"A fee for services",
+			"A type of loan"
+		],
+		"answer": "A government payment to support a business"
+	},
+	{
+		"id": 47,
+		"question": "Which of the following is a measure of a country's economic performance?",
+		"options": [
+			"Gross Domestic Product (GDP)",
+			"Consumer Price Index (CPI)",
+			"Unemployment rate",
+			"All of the above"
+		],
+		"answer": "All of the above"
+	},
+	{
+		"id": 48,
+		"question": "What is the term for the practice of investing in foreign markets?",
+		"options": [
+			"Foreign direct investment",
+			"Domestic investment",
+			"Portfolio investment",
+			"Capital flight"
+		],
+		"answer": "Foreign direct investment"
+	},
+	{
+		"id": 49,
+		"question": "Which of the following is a consequence of a trade deficit?",
+		"options": [
+			"Increased exports",
+			"Decreased domestic production",
+			"Increased employment",
+			"Stable prices"
+		],
+		"answer": "Decreased domestic production"
+	},
+	{
+		"id": 50,
+		"question": "What is the term for the total amount of money in circulation in an economy?",
+		"options": [
+			"Money supply",
+			"Monetary base",
+			"Currency reserves",
+			"Liquidity"
+		],
+		"answer": "Money supply"
+	},
+	{
+		"id": 51,
+		"question": "Which of the following is a characteristic of a mixed economy?",
+		"options": [
+			"Private and public ownership",
+			"Central planning",
+			"No government intervention",
+			"All of the above"
+		],
+		"answer": "Private and public ownership"
+	},
+	{
+		"id": 52,
+		"question": "What is the term for the practice of borrowing money to finance government spending?",
+		"options": [
+			"Deficit spending",
+			"Surplus spending",
+			"Balanced budget",
+			"Fiscal restraint"
+		],
+		"answer": "Deficit spending"
+	},
+	{
+		"id": 53,
+		"question": "Which of the following is a potential benefit of globalization?",
+		"options": [
+			"Increased competition",
+			"Job loss in developed countries",
+			"Cultural homogenization",
+			"Environmental degradation"
+		],
+		"answer": "Increased competition"
+	},
+	{
+		"id": 54,
+		"question": "What is the term for a decrease in the general price level of goods and services?",
+		"options": ["Deflation", "Inflation", "Stagnation", "Recession"],
+		"answer": "Deflation"
+	},
+	{
+		"id": 55,
+		"question": "Which of the following is a primary goal of economic policy?",
+		"options": [
+			"Maximize profits",
+			"Promote economic growth",
+			"Reduce government spending",
+			"Increase taxes"
+		],
+		"answer": "Promote economic growth"
+	},
+	{
+		"id": 56,
+		"question": "What is the term for the practice of using government spending and tax policies to influence the economy?",
+		"options": [
+			"Monetary policy",
+			"Fiscal policy",
+			"Trade policy",
+			"Regulatory policy"
+		],
+		"answer": "Fiscal policy"
+	},
+	{
+		"id": 57,
+		"question": "Which of the following is an example of a negative externality?",
+		"options": [
+			"Pollution from a factory",
+			"Education provided by the government",
+			"Public transportation",
+			"Research and development"
+		],
+		"answer": "Pollution from a factory"
+	},
+	{
+		"id": 58,
+		"question": "What is the term for the economic principle that states that as prices rise, quantity supplied increases?",
+		"options": [
+			"Law of demand",
+			"Law of supply",
+			"Market equilibrium",
+			"Price elasticity"
+		],
+		"answer": "Law of supply"
+	},
+	{
+		"id": 59,
+		"question": "Which of the following is a function of the Federal Reserve?",
+		"options": [
+			"Regulate interest rates",
+			"Control inflation",
+			"Provide financial services",
+			"All of the above"
+		],
+		"answer": "All of the above"
+	},
+	{
+		"id": 60,
+		"question": "What is the term for the practice of setting a minimum price for a good or service?",
+		"options": [
+			"Price ceiling",
+			"Price floor",
+			"Equilibrium price",
+			"Market price"
+		],
+		"answer": "Price floor"
+	},
+	{
+		"id": 61,
+		"question": "Which of the following is a characteristic of a traditional economy?",
+		"options": [
+			"Market-driven",
+			"Based on customs and traditions",
+			"Central planning",
+			"High technology"
+		],
+		"answer": "Based on customs and traditions"
+	},
+	{
+		"id": 62,
+		"question": "What is the term for the total value of all finished goods and services produced in a country in a given period?",
+		"options": [
+			"Gross Domestic Product (GDP)",
+			"Net National Product (NNP)",
+			"Gross National Product (GNP)",
+			"National Income"
+		],
+		"answer": "Gross Domestic Product (GDP)"
+	},
+	{
+		"id": 63,
+		"question": "Which of the following is a type of unemployment that results from a mismatch of skills?",
+		"options": [
+			"Cyclical unemployment",
+			"Structural unemployment",
+			"Frictional unemployment",
+			"Seasonal unemployment"
+		],
+		"answer": "Structural unemployment"
+	},
+	{
+		"id": 64,
+		"question": "What is the term for the practice of increasing the money supply to stimulate economic growth?",
+		"options": [
+			"Quantitative easing",
+			"Fiscal stimulus",
+			"Monetary tightening",
+			"Deflationary policy"
+		],
+		"answer": "Quantitative easing"
+	}
+]
