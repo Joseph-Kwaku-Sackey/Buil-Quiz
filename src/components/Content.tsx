@@ -1,8 +1,8 @@
 import InputLabel from "./InputLabel";
 import StatusView from "./StatusView";
 import {
-	useNextValue,
-	useOptionValue,
+	// useNextValue,
+	// useOptionValue,
 	useGeneralContext,
 	useFetch,
 } from "../customHooks/customHooks";
@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const Content = () => {
 	// const { nextValue } = useNextValue();
-	const { optionValue } = useOptionValue();
+	// const { optionValue } = useOptionValue();
 	const { state } = useGeneralContext();
 	const [randomValueNumber, setRandomValueNumber] = useState<number>(0);
 	const { fetchData,isloading,isError } = useFetch("http://localhost:2024/techData");
