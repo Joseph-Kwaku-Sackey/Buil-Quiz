@@ -90,7 +90,7 @@ main {
 	width: 100%;
 	position: absolute;
 	height: 80vh;
-  z-index: -30;
+  z-index: -10;
 }
 
 .background-object-animate1,
