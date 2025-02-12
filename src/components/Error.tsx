@@ -1,19 +1,19 @@
 import { useNavigate, useRouteError } from "react-router-dom";
 
-// type ErrorType = {
-// 	status: string;
-// 	message: string;
-// };
+type ErrorType = {
+	status: string;
+	message: string;
+};
 
 const Error = () => {
-	// const errorData = useRouteError() as ErrorType;
+	const errorData = useRouteError() as ErrorType;
 	const navigate = useNavigate();
 	return (
 		<section>
 			<div className="absolute w-full bg-[rgba(0,0,0,0.593)] h-full top-[50dvh] backdrop-blur-[1em] -translate-y-1/2 flex justify-center items-center">
 				<div className="relative ">
 					<h2 className="text-[1.1rem] bg-[rgba(32,35,39,0.63)] py-4 px-8 rounded-full backdrop-blur-3xl font-bold">
-						Something Happened
+						{errorData.status} - {errorData.message}
 					</h2>
 					<div className="mt-32">
 						<h2

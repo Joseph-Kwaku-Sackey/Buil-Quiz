@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import QuestionMarkSVG from "../../public/question-mark.svg";
-import BgAnimObjects from "../components/BgAnimObjects";
 
 const Home = () => {
 	return (

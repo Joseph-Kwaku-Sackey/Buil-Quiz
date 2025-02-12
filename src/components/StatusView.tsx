@@ -34,7 +34,7 @@ const StatusView = (props: propsInter) => {
 	const btnRef = useRef<HTMLButtonElement | null>(null);
 	const statusIconRef = useRef<HTMLImageElement | null>(null);
 	const spanLoaderRef = useRef<HTMLSpanElement | null>(null);
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [_, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		modeTransitionDispatch({
