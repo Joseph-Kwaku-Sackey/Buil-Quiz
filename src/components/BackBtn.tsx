@@ -11,7 +11,7 @@ const BackBtn = () => {
 					<img
 						className="max-sm:w-[25px]"
 						src={BackArrow}
-						alt=""
+						alt="back-button"
 						width={30}
 					/>
 				</button>

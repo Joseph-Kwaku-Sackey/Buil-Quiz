@@ -1,3 +1,5 @@
+import { fetchDataLenghtVar } from "../pages/Quiz";
+
 // Modes and transition
 export type ModeTransitionInitialStateType = {
 	isSelected: boolean;
@@ -11,6 +13,7 @@ export const modeTransitionInitialState: ModeTransitionInitialStateType = {
 	isViewScoreMode: false,
 	answerState: "",
 };
+
 
 export type ModeTransitionActionMainType = [
 	{
@@ -112,7 +115,7 @@ export const globalQuizValueStatusInitialstate: GlobalQuizValueStatusInitialStat
 		progressDigitValue: JSON.parse(sessionStorage.getItem("progress")!) || 0,
 		nextQuestion: 0,
 		currentQuestions: [],
-		answeredQuestions: [1,2,4],
+		answeredQuestions: [],
 		optionInputRef: null,
 		levelValue: JSON.parse(sessionStorage.getItem("levelState")!) || 0,
 		finalScore: JSON.parse(sessionStorage.getItem("finalScore")!) || 0,
@@ -159,7 +162,7 @@ export const globalQuizValueReducer = (
 			return { ...state, progressDigitValue: 0 };
 
 		case "SET_NEXT_QUESTION":
-			return { ...state, nextQuestion: Math.floor(Math.random() * 85) };
+			return { ...state, nextQuestion: Math.floor(Math.random() * fetchDataLenghtVar) };
 
 		case "SET_OPTION_INPUT_REF":
 			return { ...state, optionInputRef: action.payload };

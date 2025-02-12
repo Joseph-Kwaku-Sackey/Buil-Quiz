@@ -37,7 +37,7 @@
 	position: absolute;
 	height: 90vh;
 	filter: blur(300px);
-	opacity: 0.5;
+	opacity: 0.3;
 	z-index: -30;
 }
 
@@ -176,11 +176,12 @@
 	width: 4px;
 	background-color: transparent;
 	border-radius: 20px;
+	position: absolute;
 }
 .solution-container::-webkit-scrollbar-thumb,
 .category-container::-webkit-scrollbar-thumb {
 	border-radius: 20px;
-	background-color: rgb(41, 41, 41, 0.7);
+	background-color: transparent;
 }
 
 .solution-container::-webkit-scrollbar-corner,
@@ -189,6 +190,11 @@
 .category-container::-webkit-scrollbar-button {
 	background-color: transparent;
 }
+
+.category-scroll::-webkit-scrollbar-thumb{
+	background-color: rgb(41, 41, 41);
+}
+
 
 /* loader compo */
 .loader{
@@ -203,4 +209,8 @@
 	to{
 		opacity: .4;
 	}
+}
+
+.SetOpacity{
+	opacity: 1;
 }

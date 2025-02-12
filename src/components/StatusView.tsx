@@ -132,7 +132,7 @@ const StatusView = (props: propsInter) => {
 	}, [globalQuizValueStatusState.finalScore]);
 
 	useEffect(() => {
-		const val = globalQuizValueStatusState?.levelValue! / 100;
+		const val = globalQuizValueStatusState.levelValue! / 100;
 
 		spanLoaderRef.current?.animate(
 			[

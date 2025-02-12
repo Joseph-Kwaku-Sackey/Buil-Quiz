@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Params } from "react-router-dom";
 
 export type DataType = {
@@ -7,26 +8,14 @@ export type DataType = {
 	answer: string;
 };
 
-export type FetchDataType = [DataType];
+// export type FetchDataType = [DataType];
 
-export const getQuestion = async (params: Params<string>) => {
-	try {
-		const responds = await fetch(
-			`https://joseph-kwaku-sackey.github.io/buil-quiz_API/${params.id}.json`
-		);
-		// "http://localhost:204/techData"
+const BASE_URL = "https://joseph-kwaku-sackey.github.io/buil-quiz_API/";
+const BASE_URL_LOCAL = "http://localhost:2026/techData";
 
-		if (responds.ok) {
-			const result: FetchDataType = await responds.json();
-			return result;
-		} else {
-			throw {
-				message: "Quiz Not Found",
-				statusText: responds.statusText,
-				status: responds.status,
-			};
-		}
-	} catch (error) {
-		throw error;
-	}
+export const getQuestion = async (
+	param: Params<string>
+): Promise<DataType[]> => {
+	const res = await axios.get(BASE_URL + param.id+".json");
+	return res.data;
 };

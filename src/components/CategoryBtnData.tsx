@@ -71,7 +71,7 @@ export const categoryBtnData = [
 	},
 	{
 		id: 15,
-		path: "/category/Music",
+		path: "/category/music",
 		textContent: "Music",
 	},
 	{

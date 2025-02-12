@@ -16,7 +16,7 @@ export const InputLabelLoader = (props: {
 export const LoaderSub = () => {
 	return (
 		<div className="loader-container">
-			<span className="loader-container__loader"></span>;
+			<span className="loader-container__loader"></span>
 		</div>
 	);
 };
@@ -25,6 +25,7 @@ const Loader = () => {
 	const styles = {
 		secondaryColor: { backgroundColor: "rgb(200,200,200)" },
 	};
+
 
 	return (
 		<div className="loader-container">

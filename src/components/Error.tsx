@@ -1,4 +1,4 @@
-import { Link, useRouteError } from "react-router-dom";
+import { useNavigate, useRouteError } from "react-router-dom";
 
 type ErrorType = {
 	status: string;
@@ -7,7 +7,7 @@ type ErrorType = {
 
 const Error = () => {
 	const errorData = useRouteError() as ErrorType;
-
+	const navigate = useNavigate();
 	return (
 		<section>
 			<div className="absolute w-full bg-[rgba(0,0,0,0.593)] h-full top-[50dvh] backdrop-blur-[1em] -translate-y-1/2 flex justify-center items-center">
@@ -16,11 +16,11 @@ const Error = () => {
 						{errorData.status} - {errorData.message}
 					</h2>
 					<div className="mt-32">
-						<Link
-							to={".."}
-							className=" text-[.9rem] text-gray-400 underline underline-offset-4">
+						<h2
+							className=" text-[.9rem] text-gray-400 underline underline-offset-4"
+							onClick={() => navigate(-1)}>
 							Send me back
-						</Link>
+						</h2>
 					</div>
 				</div>
 			</div>

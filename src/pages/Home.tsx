@@ -7,10 +7,10 @@ const Home = () => {
 		<>
 			<section className="home-container flex justify-center h-full select-none bg-[rgba(0,0,0,0.55)]">
 				<div>
-					<BgAnimObjects />
+					{/* <BgAnimObjects /> */}
 				</div>
 				<div className=" flex flex-col my-8 items-center justify-center ">
-					<div className="flex flex-col relative max-sm:w-[275px] tracking-tighter w-[500px]">
+					<div className="flex flex-col relative  max-sm:w-[280px] tracking-tighter w-[465px]">
 						<h1 className="font-black bg-gradient-to-r from-[rgb(200,200,200)] to-[rgb(250,250,250)] text-transparent text-left text-[3rem] max-sm:text-[2.2rem] bg-clip-text leading-[1.5ch] ">
 							Explore over{" "}
 							<span className="bg-clip-text text-transparent font-black bg-gradient-to-r from-blue-400 to-red-400">
@@ -34,7 +34,7 @@ const Home = () => {
 						<span className="text-blue-500 ">without signing up/in</span>.
 					</p>
 				</div>
-				<div className="absolute md:left-[45em] -z-10 max-sm:top-[15em] opacity-[.02] max-sm:opacity-0 top-[10em]">
+				<div className="absolute md:left-[45em] -z-10 max-sm:top-[15em] opacity-[.005] max-sm:opacity-0 top-[10em]">
 					<img
 						src={QuestionMarkSVG}
 						alt="question-mark-svg"

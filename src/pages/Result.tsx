@@ -60,6 +60,14 @@ const Result = () => {
 		return globalQuizValueStatusState.finalScore >= resultState.averageScore;
 	};
 
+	const handleScroll = () => {
+		solutionDisplayRef.current!.classList.add("category-scroll");
+		const timeoutId = setTimeout(() => {
+			solutionDisplayRef.current?.classList.remove("category-scroll");
+			clearTimeout(timeoutId);
+		}, 3000);
+	};
+
 	const handleResultProceedClick = () => {
 		sessionStorage.removeItem("levelState");
 		globalQuizValueStatusDispatch({ type: "RESET_LEVEL_VALUE" });
@@ -134,7 +142,7 @@ const Result = () => {
 
 	return (
 		<>
-			<main className=" mt-[5em]">
+			<main className=" mt-[3em]">
 				<Suspense fallback={<LoaderSub />}>
 					<Await resolve={loaderData.question}>
 						{(loaderPromise: FetchDataType) => {
@@ -232,6 +240,7 @@ const Result = () => {
 													{resultState.viewSolution && (
 														<div
 															className="bg-[rgba(106,106,106,0.119)] p-[2em] max-sm:p-[1.3em] w-[400px] rounded-[10px] mt-6 overflow-scroll solution-container flex-col gap-4 max-h-0 "
+															onScroll={handleScroll}
 															ref={solutionDisplayRef}>
 															{incorrectValue.map((value, i) => {
 																return (

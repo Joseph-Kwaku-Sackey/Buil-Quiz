@@ -1,14 +1,14 @@
 import { forwardRef } from "react";
 // import { useOptionValue, useGeneralContext } from "../customHooks/customHooks";
 
-type clickHandlerType = {
-	handleBtnClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+type clickHandlerPropType = {
+	handleBtnClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	name: string;
 	class?: string;
 	color?: string;
 };
 
-const GenBtn = forwardRef<HTMLButtonElement, clickHandlerType>((props, ref) => {
+const GenBtn = forwardRef<HTMLButtonElement, clickHandlerPropType>((props, ref) => {
 	return (
 		<>
 			<button

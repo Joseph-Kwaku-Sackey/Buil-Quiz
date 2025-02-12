@@ -15,4 +15,4 @@ export type ContextApiType = {
 		GlobalQuizValueStatusActionType[number]
 	>;
 };
-export const ContextApi = createContext<ContextApiType>({} as ContextApiType);
+export const ContextApi = createContext({} as ContextApiType);

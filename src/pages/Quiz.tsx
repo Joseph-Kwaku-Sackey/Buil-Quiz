@@ -1,109 +1,76 @@
-import { FetchDataType } from "../utilities/DataFetches";
+// import { FetchDataType } from "../utilities/DataFetches";
 import InputLabel from "../components/InputLabel";
 import StatusView from "../components/StatusView";
 import { useContextApi } from "../customHooks/customHooks";
-import { Suspense, useEffect, useState } from "react";
-import {
-	LoaderFunctionArgs,
-	useLoaderData,
-	Await,
-	defer,
-	useNavigation,
-} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getQuestion } from "../utilities/DataFetches";
-import Loader from "../components/Loader";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 export type LoaderArgsType = { params: { id: string } };
 
-export const loader = async ({
-	params,
-}: LoaderFunctionArgs<LoaderArgsType>) => {
-	const questioNPromise = getQuestion(params);
-	return defer({ question: questioNPromise });
-};
-
-export type DeferType = {
-	question: FetchDataType;
-};
+export let fetchDataLenghtVar = 0;
 
 const Content = () => {
-	const loaderData = useLoaderData() as DeferType;
+	const params = useParams();
 	const { modeTransitionState, globalQuizValueStatusState } = useContextApi();
 	const [randomValue, setRandomValue] = useState<number>(0);
-	const navigation = useNavigation();
+	const { data: fetchData } = useSuspenseQuery({
+		queryKey: ["quizData"],
+		queryFn: () => getQuestion(params),
+	});
+	const fetchDataLength = fetchData.length;
+
+	console.log(fetchData);
 
 	useEffect(() => {
-		console.log(navigation.state);
-	}, [navigation.state]);
+		fetchDataLenghtVar = fetchDataLength;
+		const random = Math.floor(Math.random() * fetchDataLength);
+		setRandomValue(
+			JSON.parse(sessionStorage.getItem("currentQuestion")!) || random
+		);
+	}, []);
+
+	const questionData =
+		fetchData[globalQuizValueStatusState.nextQuestion || randomValue];
 
 	return (
-		<section className="flex justify-center items-center h-[70vh] ">
-			<Suspense fallback={<Loader />}>
-				<Await resolve={loaderData.question}>
-					{(dataPromise: FetchDataType) => {
-						// console.log(globalQuizValueStatusState.answeredQuestions);
-
-						dataPromise.map((value) => {
-							globalQuizValueStatusState.answeredQuestions.filter((val) => {
-								if (val !== value.id) {
-									// console.log(value);
-								}
-							});
-						});
-
-						const [fetchData] = useState(dataPromise);
-						useEffect(() => {
-							const random = Math.floor(Math.random() * fetchData.length);
-							setRandomValue(
-								JSON.parse(sessionStorage.getItem("currentQuestion")!) || random
-							);
-						}, []);
-
-						const questionData =
-							fetchData[globalQuizValueStatusState.nextQuestion || randomValue];
-						return (
+		<div className="flex justify-center items-center">
+			<article className="quiz-container  mx-4 w-[400px] mb-14">
+				{!modeTransitionState.isViewScoreMode && (
+					<section className="text-left flex flex-col">
+						<h2 className="quiz-container__question ">
+							{questionData?.question}
+						</h2>
+						{!modeTransitionState.isSelected && (
+							<div className="h-[25px]">
+								<p className="error-message font-bold">
+									Select an option to proceed
+								</p>
+							</div>
+						)}
+					</section>
+				)}
+				<section>
+					<form>
+						{!modeTransitionState.isViewScoreMode && (
 							<>
-								<article className="quiz-container  mx-4 w-[400px] mb-14">
-									{!modeTransitionState.isViewScoreMode && (
-										<section className="text-left flex flex-col">
-											<h2 className="quiz-container__question ">
-												{questionData?.question}
-											</h2>
-											{!modeTransitionState.isSelected && (
-												<div className="h-[25px]">
-													<p className="error-message font-bold">
-														Select an option to proceed
-													</p>
-												</div>
-											)}
-										</section>
-									)}
-									<section>
-										<form>
-											{!modeTransitionState.isViewScoreMode && (
-												<>
-													{questionData?.options.map((value, i) => {
-														return (
-															<InputLabel
-																key={i}
-																option={value}
-																id={String(i)}
-															/>
-														);
-													})}
-												</>
-											)}
-											<StatusView questionData={questionData} />
-										</form>
-									</section>
-								</article>
+								{questionData?.options.map((value, i) => {
+									return (
+										<InputLabel
+											key={i}
+											option={value}
+											id={String(i)}
+										/>
+									);
+								})}
 							</>
-						);
-					}}
-				</Await>
-			</Suspense>
-		</section>
+						)}
+						<StatusView questionData={questionData} />
+					</form>
+				</section>
+			</article>
+		</div>
 	);
 };
-
 export default Content;

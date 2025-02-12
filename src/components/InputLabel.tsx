@@ -67,29 +67,29 @@ const InputLabel = (props: inputType) => {
 
 	return (
 		<>
-			<section className="input-label-container">
-				<div className="flex">
-					<input
-						className="input-label-container__input-option"
-						id={props.id}
-						type="radio"
-						value={props.option}
-						name="options"
-						ref={inputRef}
-					/>
-					<span
-						className="w-[25px] h-[25px] border-white border-solid border-[1px] relative cursor-pointer scale-[.78] rounded-[20px] input-custom"
-						onClick={handleSpanClick}></span>
-				</div>
-				<div className="text-left">
-					<label
-						className="cursor-pointer font-[500]"
-						onClick={handleLabelClick}
-						ref={labelRef}>
-						{props.option}
-					</label>
-				</div>
-			</section>
+				<section className="input-label-container">
+					<div className="flex">
+						<input
+							className="input-label-container__input-option"
+							id={props.id}
+							type="radio"
+							value={props.option}
+							name="options"
+							ref={inputRef}
+						/>
+						<span
+							className="w-[25px] h-[25px] border-white border-solid border-[1px] relative cursor-pointer scale-[.78] rounded-[20px] input-custom"
+							onClick={handleSpanClick}></span>
+					</div>
+					<div className="text-left">
+						<label
+							className="cursor-pointer font-[500]"
+							onClick={handleLabelClick}
+							ref={labelRef}>
+							{props.option}
+						</label>
+					</div>
+				</section>
 		</>
 	);
 };

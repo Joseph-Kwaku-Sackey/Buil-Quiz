@@ -5,14 +5,17 @@ import "./index.css";
 import "./styles/global.css";
 import "./styles/ComponentCSS.css";
 import "./styles/animationKeyframes.css";
-
-
 import { ContextApiProvider } from "./contextApi/ContextApi.tsx";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
+const client = new QueryClient({});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-	<React.StrictMode>
-		<ContextApiProvider>
-			<App />
-		</ContextApiProvider>
-	</React.StrictMode>
+	<ContextApiProvider>
+		<React.StrictMode>
+			<QueryClientProvider client={client}>
+				<App />
+			</QueryClientProvider>
+		</React.StrictMode>
+	</ContextApiProvider>
 );
