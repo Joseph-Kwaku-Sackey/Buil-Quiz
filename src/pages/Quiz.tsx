@@ -1,34 +1,42 @@
 // import { FetchDataType } from "../utilities/DataFetches";
 import InputLabel from "../components/InputLabel";
 import StatusView from "../components/StatusView";
-import { useContextApi } from "../customHooks/customHooks";
+import { useContextApi, useQueryData } from "../customHooks/customHooks";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getQuestion } from "../utilities/DataFetches";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { DataType } from "../utilities/DataFetches";
 
 export type LoaderArgsType = { params: { id: string } };
 
 export let fetchDataLenghtVar = 0;
+export let fetchDataExpo: DataType[];
 
 const Content = () => {
 	const params = useParams();
-	const { modeTransitionState, globalQuizValueStatusState } = useContextApi();
+	const {
+		modeTransitionState,
+		globalQuizValueStatusState,
+		globalQuizValueStatusDispatch,
+	} = useContextApi();
 	const [randomValue, setRandomValue] = useState<number>(0);
-	const { data: fetchData } = useSuspenseQuery({
-		queryKey: ["quizData"],
-		queryFn: () => getQuestion(params),
-	});
+	const { fetchData } = useQueryData(params);
+	
+
 	const fetchDataLength = fetchData.length;
 
-	console.log(fetchData);
+	// console.log(fetchData);
 
 	useEffect(() => {
 		fetchDataLenghtVar = fetchDataLength;
+		fetchDataExpo = fetchData;
 		const random = Math.floor(Math.random() * fetchDataLength);
 		setRandomValue(
 			JSON.parse(sessionStorage.getItem("currentQuestion")!) || random
 		);
+		globalQuizValueStatusDispatch({
+			type: "CATEGORY_TYPE_PARAM",
+			payload: params.id!,
+		});
 	}, []);
 
 	const questionData =

@@ -1,14 +1,16 @@
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ContextApi } from "../contextApi/CreateContext";
 import { useContext } from "react";
+import { getQuestion } from "../utilities/DataFetches";
+import { Params } from "react-router-dom";
 
 export const useContextApi = () => {
-	const contextApiState = useContext(ContextApi);
 	const {
 		modeTransitionState,
 		modeTransitionDispatch,
 		globalQuizValueStatusState,
 		globalQuizValueStatusDispatch,
-	} = contextApiState;
+	} = useContext(ContextApi);
 
 	return {
 		modeTransitionState,
@@ -16,4 +18,13 @@ export const useContextApi = () => {
 		globalQuizValueStatusState,
 		globalQuizValueStatusDispatch,
 	};
+};
+
+export const useQueryData = (param: Params<string>) => {
+	const { data: fetchData } = useSuspenseQuery({
+		queryKey: ["quizData"],
+		queryFn: () => getQuestion(param),
+	});
+
+	return { fetchData };
 };

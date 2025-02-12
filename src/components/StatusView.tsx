@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import GenBtn from "./GenBtn";
 import CorrectIcon from "../assets/img/correctBtn.svg";
 import WrongIcon from "../assets/img/WrongBtn.svg";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 interface propsInter {
 	questionData: {
@@ -34,6 +34,7 @@ const StatusView = (props: propsInter) => {
 	const btnRef = useRef<HTMLButtonElement | null>(null);
 	const statusIconRef = useRef<HTMLImageElement | null>(null);
 	const spanLoaderRef = useRef<HTMLSpanElement | null>(null);
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		modeTransitionDispatch({
@@ -180,6 +181,7 @@ const StatusView = (props: propsInter) => {
 		globalQuizValueStatusState.levelValue === 100
 			? navigate(`/category/${param.id}/result`)
 			: null;
+		setSearchParams(`cat=${param.id}`);
 	};
 
 	return (

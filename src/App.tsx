@@ -2,7 +2,6 @@ import "./App.css";
 import Layout from "./components/Layout";
 import Quiz from "./pages/Quiz";
 import Error from "./components/Error";
-import { loader as resultLoader } from "./pages/Result";
 
 import {
 	RouterProvider,
@@ -26,7 +25,6 @@ function App() {
 						index
 						element={<Home />}
 					/>
-
 					<Route
 						path="category"
 						element={<Category />}
@@ -38,7 +36,6 @@ function App() {
 					<Route
 						path="category/:id/result"
 						element={<Result />}
-						loader={resultLoader}
 					/>
 				</Route>
 				<Route

@@ -1,33 +1,18 @@
 // import GenBtn from "../components/GenBtn";
-import { useContextApi } from "../customHooks/customHooks";
-import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useContextApi, useQueryData } from "../customHooks/customHooks";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import resultStatusTryBtn from "../assets/img/refresh.svg";
 import resultStatusProeedBtn from "../assets/img/next-arrow.svg";
-import {
-	Await,
-	Link,
-	LoaderFunctionArgs,
-	defer,
-	useLoaderData,
-} from "react-router-dom";
-import { DataType, FetchDataType, getQuestion } from "../utilities/DataFetches";
-import { LoaderSub } from "../components/Loader";
-import { DeferType, LoaderArgsType } from "./Quiz";
+import { Link, useSearchParams } from "react-router-dom";
+import { DataType} from "../utilities/DataFetches";
+// import { LoaderSub } from "../components/Loader";
 
 type resultStateType = {
 	averageScore: number;
 	viewSolution: boolean;
 };
 
-export const loader = async ({
-	params,
-}: LoaderFunctionArgs<LoaderArgsType>) => {
-	const questionPromise = getQuestion(params);
-	return defer({ question: questionPromise });
-};
-
 const Result = () => {
-	const loaderData = useLoaderData() as DeferType;
 	const [resultState, setResultState] = useState<resultStateType>({
 		averageScore: 70,
 		viewSolution: false,
@@ -42,6 +27,17 @@ const Result = () => {
 	const resultStatusTextRef = useRef<HTMLParagraphElement | null>(null);
 	const solutionDisplayRef = useRef<HTMLDivElement | null>(null);
 	const motivateTextRef = useRef<HTMLParagraphElement | null>(null);
+	const [searchParams, _] = useSearchParams();
+	const { fetchData } = useQueryData({ id: searchParams.get("cat") as string });
+
+	useEffect(() => {
+		const incorrectAns = fetchData.map((question) => {
+			if (globalQuizValueStatusState.incorrectAnswers.includes(question.id)) {
+				setIncorrectValue((prev) => [...prev, question]);
+			}
+		});
+		console.log(incorrectAns);
+	}, []);
 
 	useLayoutEffect(() => {
 		let innitialCountState = 0;
@@ -143,141 +139,115 @@ const Result = () => {
 	return (
 		<>
 			<main className=" mt-[3em]">
-				<Suspense fallback={<LoaderSub />}>
-					<Await resolve={loaderData.question}>
-						{(loaderPromise: FetchDataType) => {
-							useEffect(() => {
-								globalQuizValueStatusState.incorrectAnswers.map((val) => {
-									loaderPromise.map((value) => {
-										if (value.id === val) {
-											console.log();
-
-											setIncorrectValue((prev) => {
-												return [...prev, value];
-											});
+				<section className={` flex justify-center `}>
+					<div className=" flex flex-col items-center">
+						<div className="flex flex-col items-center relative">
+							<p
+								className={` relative bottom-5 h-[40px] ${
+									globalQuizValueStatusState.finalScore! >=
+										resultState.averageScore || resultCompare()
+										? "text-green-500"
+										: "text-red-500"
+								}`}
+								style={{
+									fontWeight: "bold",
+									fontSize: "2.5rem",
+									position: "relative",
+								}}
+								ref={resultValueRef}>
+								{`${resultValueState}%`}
+							</p>
+							<p
+								className="relative top-3 mb-2 opacity-0"
+								ref={resultStatusTextRef}
+								style={{
+									color: `${
+										resultCompare() ? "rgb(34 197 94)" : "rgb(239 68 68)"
+									}`,
+								}}>
+								{resultCompare() ? "Congratulations!" : "try again!"}
+							</p>
+							<Link
+								to=".."
+								onClick={handleResultProceedClick}
+								relative="path"
+								className="">
+								<button
+									className="opacity-0 my-2 rounded-full relative w-[90px] h-[45px] grid place-content-center "
+									ref={resultProceedBtnRef}
+									style={{
+										backgroundColor: `${
+											resultCompare()
+												? " hsla(120,24%,9%,1)"
+												: "hsla(0,24%,9%,1)"
+										}`,
+										border: `solid 1px  ${
+											resultCompare()
+												? " hsla(120,24%,15%,1)"
+												: "hsla(0,24%,15%,1)"
+										}`,
+									}}>
+									<img
+										src={
+											resultCompare()
+												? resultStatusProeedBtn
+												: resultStatusTryBtn
 										}
-									});
-								});
-							}, []);
-
-							return (
-								<section className={` flex justify-center `}>
-									<div className=" flex flex-col items-center">
-										<div className="flex flex-col items-center relative">
-											<p
-												className={` relative bottom-5 h-[40px] ${
-													globalQuizValueStatusState.finalScore! >=
-														resultState.averageScore || resultCompare()
-														? "text-green-500"
-														: "text-red-500"
-												}`}
-												style={{
-													fontWeight: "bold",
-													fontSize: "2.5rem",
-													position: "relative",
-												}}
-												ref={resultValueRef}>
-												{`${resultValueState}%`}
-											</p>
-											<p
-												className="relative top-3 mb-2 opacity-0"
-												ref={resultStatusTextRef}
-												style={{
-													color: `${
-														resultCompare()
-															? "rgb(34 197 94)"
-															: "rgb(239 68 68)"
-													}`,
-												}}>
-												{resultCompare() ? "Congratulations!" : "try again!"}
-											</p>
-											<Link
-												to=".."
-												onClick={handleResultProceedClick}
-												relative="path"
-												className="">
-												<button
-													className="opacity-0 my-2 rounded-full relative w-[90px] h-[45px] grid place-content-center "
-													ref={resultProceedBtnRef}
-													style={{
-														backgroundColor: `${
-															resultCompare()
-																? " hsla(120,24%,9%,1)"
-																: "hsla(0,24%,9%,1)"
-														}`,
-														border: `solid 1px  ${
-															resultCompare()
-																? " hsla(120,24%,15%,1)"
-																: "hsla(0,24%,15%,1)"
-														}`,
-													}}>
-													<img
-														src={
-															resultCompare()
-																? resultStatusProeedBtn
-																: resultStatusTryBtn
-														}
-														alt="result-status-icon"
-														width={resultCompare() ? 23 : 18}
-													/>
-												</button>
-											</Link>
+										alt="result-status-icon"
+										width={resultCompare() ? 23 : 18}
+									/>
+								</button>
+							</Link>
+						</div>
+						<section className="flex justify-center max-sm:w-[80%]">
+							{globalQuizValueStatusState.finalScore !== 100 && (
+								<>
+									{!resultState.viewSolution && (
+										<div
+											className="flex justify-center opacity-0"
+											ref={solutionBtnContainerRef}>
+											<button
+												className="bg-[rgba(33,33,33,0.72)] text-nowrap transition-all duration-[.3s] hover:bg-[rgb(33,33,33)] px-[3em] rounded-full py-[1em] text-[rgb(21,152,167)]"
+												onClick={handleSolutionClick}>
+												View Solution
+											</button>
 										</div>
-										<section className="flex justify-center max-sm:w-[80%]">
-											{globalQuizValueStatusState.finalScore !== 100 && (
-												<>
-													{!resultState.viewSolution && (
-														<div
-															className="flex justify-center opacity-0"
-															ref={solutionBtnContainerRef}>
-															<button
-																className="bg-[rgba(33,33,33,0.72)] text-nowrap transition-all duration-[.3s] hover:bg-[rgb(33,33,33)] px-[3em] rounded-full py-[1em] text-[rgb(21,152,167)]"
-																onClick={handleSolutionClick}>
-																View Solution
-															</button>
-														</div>
-													)}
-													{resultState.viewSolution && (
-														<div
-															className="bg-[rgba(106,106,106,0.119)] p-[2em] max-sm:p-[1.3em] w-[400px] rounded-[10px] mt-6 overflow-scroll solution-container flex-col gap-4 max-h-0 "
-															onScroll={handleScroll}
-															ref={solutionDisplayRef}>
-															{incorrectValue.map((value, i) => {
-																return (
-																	<div
-																		key={i}
-																		className="text-left">
-																		<h1>{value.question}</h1>
-																		<p className="text-green-400">
-																			{value.answer}
-																		</p>
-																	</div>
-																);
-															})}
-															<em>
-																<p className="text-[#636363] text-[.88rem]">
-																	Hope you know the answer(s) now. <br /> Keep
-																	on going...
-																</p>
-															</em>
-														</div>
-													)}
-												</>
-											)}
-											{globalQuizValueStatusState.finalScore === 100 && (
-												<p
-													className="opacity-0 w-[200px] relative top-4 text-[rgb(100,100,100)] italic text-[.88rem]"
-													ref={motivateTextRef}>
-													Keep on going...
+									)}
+									{resultState.viewSolution && (
+										<div
+											className="bg-[rgba(106,106,106,0.119)] p-[2em] max-sm:p-[1.3em] w-[400px] rounded-[10px] mt-6 overflow-scroll solution-container flex-col gap-4 max-h-0 "
+											onScroll={handleScroll}
+											ref={solutionDisplayRef}>
+											{incorrectValue.map((value, i) => {
+												return (
+													<div
+														key={i}
+														className="text-left">
+														<h1>{value.question}</h1>
+														<p className="text-green-400">{value.answer}</p>
+													</div>
+												);
+											})}
+											<em>
+												<p className="text-[#636363] text-[.88rem]">
+													Hope you know the answer(s) now. <br /> Keep on
+													going...
 												</p>
-											)}
-										</section>
-									</div>
-								</section>
-							);
-						}}
-					</Await>
-				</Suspense>
+											</em>
+										</div>
+									)}
+								</>
+							)}
+							{globalQuizValueStatusState.finalScore === 100 && (
+								<p
+									className="opacity-0 w-[200px] relative top-4 text-[rgb(100,100,100)] italic text-[.88rem]"
+									ref={motivateTextRef}>
+									Keep on going...
+								</p>
+							)}
+						</section>
+					</div>
+				</section>
 			</main>
 		</>
 	);

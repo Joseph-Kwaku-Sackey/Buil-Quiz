@@ -1,4 +1,4 @@
-export const categoryBtnData = [
+export const 	categoryBtnData = [
 	{
 		id: 1,
 		path: "/category/general-knowledge",

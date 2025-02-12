@@ -14,7 +14,6 @@ export const modeTransitionInitialState: ModeTransitionInitialStateType = {
 	answerState: "",
 };
 
-
 export type ModeTransitionActionMainType = [
 	{
 		type:
@@ -77,6 +76,7 @@ export interface GlobalQuizValueStatusInitialStateType {
 	finalScore: number;
 	quizLevel: number;
 	incorrectAnswers: number[];
+	categoryTypeParam: { id: string };
 }
 
 export type GlobalQuizValueStatusActionType = [
@@ -95,7 +95,7 @@ export type GlobalQuizValueStatusActionType = [
 			| "RESET_CURRENT_QUESTIONS";
 	},
 	{
-		type: "SET_OPTION_VALUE" | "SET_ANSWER_STATE";
+		type: "SET_OPTION_VALUE" | "SET_ANSWER_STATE" | "CATEGORY_TYPE_PARAM";
 		payload: string;
 	},
 	{ type: "SET_OPTION_INPUT_REF"; payload: OptionIputRefType },
@@ -122,6 +122,7 @@ export const globalQuizValueStatusInitialstate: GlobalQuizValueStatusInitialStat
 		quizLevel: 1,
 		incorrectAnswers:
 			JSON.parse(sessionStorage.getItem("incorrectAnswer")!) || [],
+		categoryTypeParam: { id: "" },
 	};
 
 export const globalQuizValueReducer = (
@@ -162,7 +163,13 @@ export const globalQuizValueReducer = (
 			return { ...state, progressDigitValue: 0 };
 
 		case "SET_NEXT_QUESTION":
-			return { ...state, nextQuestion: Math.floor(Math.random() * fetchDataLenghtVar) };
+			return {
+				...state,
+				nextQuestion: Math.floor(Math.random() * fetchDataLenghtVar),
+			};
+
+		case "CATEGORY_TYPE_PARAM":
+			return { ...state, categoryTypeParam: { id: action.payload } };
 
 		case "SET_OPTION_INPUT_REF":
 			return { ...state, optionInputRef: action.payload };
