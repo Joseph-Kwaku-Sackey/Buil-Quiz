@@ -17,10 +17,7 @@
 	row-gap: 1em;
 	box-shadow: 4px 5px 20px rgba(0, 0, 0, 0.296);
 	transition: all 0.4s ease-out;
-}
-
-
-.quiz-container__question {
+	
 	font-size: var(--large-font);
 	font-weight: 700;
 }
@@ -59,7 +56,11 @@
 
 /* InputLabel Comp */
 .input-label-container__input-option {
-	display: none;
+	opacity: 0;
+	scale: 1.6;
+	position: absolute;
+	z-index: 20;
+	cursor: pointer;
 }
 .input-label-container {
 	display: flex;
@@ -69,6 +70,7 @@
 	margin-bottom: 1.5em;
 	gap: 2em;
 }
+
 .input-label-container__input-option:checked + .input-custom::before {
 	content: "";
 	position: absolute;
@@ -191,26 +193,25 @@
 	background-color: transparent;
 }
 
-.category-scroll::-webkit-scrollbar-thumb{
+.category-scroll::-webkit-scrollbar-thumb {
 	background-color: rgb(41, 41, 41);
 }
 
-
 /* loader compo */
-.loader{
-	opacity: .4;
-	animation: fade-in-out .5s infinite alternate;
+.loader {
+	opacity: 0.4;
+	animation: fade-in-out 0.5s infinite alternate;
 }
 
 @keyframes fade-in-out {
-	from{
-		opacity: .15
+	from {
+		opacity: 0.15;
 	}
-	to{
-		opacity: .4;
+	to {
+		opacity: 0.4;
 	}
 }
 
-.SetOpacity{
+.SetOpacity {
 	opacity: 1;
 }

@@ -3,31 +3,30 @@ import { fetchDataLenghtVar } from "../pages/Quiz";
 // Modes and transition
 export type ModeTransitionInitialStateType = {
 	isSelected: boolean;
+	isSelectionError: boolean;
 	isStatusMode: boolean;
 	isViewScoreMode: boolean;
 	answerState: string;
 };
 export const modeTransitionInitialState: ModeTransitionInitialStateType = {
-	isSelected: true,
-	isStatusMode: false,
+	isSelected: JSON.parse(sessionStorage.getItem("isSelected")!) || false,
+	isSelectionError: false,
+	isStatusMode: JSON.parse(sessionStorage.getItem("statusMode")!) || false,
 	isViewScoreMode: false,
 	answerState: "",
 };
 
 export type ModeTransitionActionMainType = [
 	{
-		type:
-			| "NOT_SELECTED"
-			| "SELECTED"
-			| "VIEW_SCORE_MODE_ON"
-			| "VIEW_SCORE_MODE_OFF";
-	},
-	{
 		type: "SET_ANSWER_STATE";
 		payload: string;
 	},
 	{
-		type: "SWITCH_STATUS_MODE";
+		type:
+			| "SWITCH_STATUS_MODE"
+			| "SELECTION_ERROR"
+			| "SELECTED"
+			| "VIEW_SCORE_MODE";
 		payload: boolean;
 	}
 ];
@@ -38,10 +37,10 @@ export const modeTransitionReducer = (
 ) => {
 	switch (action.type) {
 		case "SELECTED":
-			return { ...state, isSelected: true };
+			return { ...state, isSelected: action.payload };
 
-		case "NOT_SELECTED":
-			return { ...state, isSelected: false };
+		case "SELECTION_ERROR":
+			return { ...state, isSelectionError: action.payload };
 
 		case "SWITCH_STATUS_MODE":
 			return {
@@ -49,11 +48,8 @@ export const modeTransitionReducer = (
 				isStatusMode: action.payload,
 			};
 
-		case "VIEW_SCORE_MODE_ON":
-			return { ...state, isViewScoreMode: true };
-
-		case "VIEW_SCORE_MODE_OFF":
-			return { ...state, isViewScoreMode: false };
+		case "VIEW_SCORE_MODE":
+			return { ...state, isViewScoreMode: action.payload };
 
 		default:
 			return state;
@@ -70,7 +66,7 @@ export interface GlobalQuizValueStatusInitialStateType {
 	progressDigitValue: number;
 	nextQuestion: number;
 	answeredQuestions: number[];
-	currentQuestions: number[];
+	currentQuestion: number;
 	optionInputRef: OptionIputRefType;
 	levelValue: number;
 	finalScore: number;
@@ -92,7 +88,7 @@ export type GlobalQuizValueStatusActionType = [
 			| "RESET_FINAL_SCORE"
 			| "SET_QUIZ_LEVEL"
 			| "RESET_INCORRECT_ANSWER"
-			| "RESET_CURRENT_QUESTIONS";
+			| "RESET_CURRENT_QUESTION";
 	},
 	{
 		type: "SET_OPTION_VALUE" | "SET_ANSWER_STATE" | "CATEGORY_TYPE_PARAM";
@@ -102,7 +98,7 @@ export type GlobalQuizValueStatusActionType = [
 	{
 		type:
 			| "SET_INCORRECT_ANSWER"
-			| "SET_CURRENT_QUESTIONS"
+			| "SET_CURRENT_QUESTION"
 			| "SET_ANSWERED_QUESTIONS";
 		payload: number;
 	}
@@ -111,11 +107,13 @@ export type GlobalQuizValueStatusActionType = [
 export const globalQuizValueStatusInitialstate: GlobalQuizValueStatusInitialStateType =
 	{
 		answerValue: "",
-		optionValue: "",
+		optionValue: JSON.parse(sessionStorage.getItem("selectedOption")!) || "",
 		progressDigitValue: JSON.parse(sessionStorage.getItem("progress")!) || 0,
 		nextQuestion: 0,
-		currentQuestions: [],
-		answeredQuestions: [],
+		currentQuestion:
+			JSON.parse(sessionStorage.getItem("currentQuestion")!) || 0,
+		answeredQuestions:
+			JSON.parse(sessionStorage.getItem("completedQuestions")!) || [],
 		optionInputRef: null,
 		levelValue: JSON.parse(sessionStorage.getItem("levelState")!) || 0,
 		finalScore: JSON.parse(sessionStorage.getItem("finalScore")!) || 0,
@@ -148,15 +146,15 @@ export const globalQuizValueReducer = (
 				answeredQuestions: [...state.answeredQuestions, action.payload],
 			};
 
-		case "SET_CURRENT_QUESTIONS":
+		case "SET_CURRENT_QUESTION":
 			return {
 				...state,
-				currentQuestions: [...state.currentQuestions, action.payload],
+				currentQuestion: { ...state, currentQuestion: action.payload },
 			};
-		case "RESET_CURRENT_QUESTIONS":
+		case "RESET_CURRENT_QUESTION":
 			return {
 				...state,
-				currentQuestions: [],
+				currentQuestions: 0,
 			};
 
 		case "RESET_PROGRESS_DIGIT_VALUE":

@@ -1,23 +1,29 @@
-import { forwardRef } from "react";
 // import { useOptionValue, useGeneralContext } from "../customHooks/customHooks";
 
-type clickHandlerPropType = {
-	handleBtnClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+type clickHandlerType = {
+	handleBtnClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	name: string;
-	class?: string;
+	styleClass?: string;
 	color?: string;
+	refBtn: React.MutableRefObject<HTMLButtonElement | null>;
 };
 
-const GenBtn = forwardRef<HTMLButtonElement, clickHandlerPropType>((props, ref) => {
+const GenBtn = ({
+	handleBtnClick,
+	name,
+	styleClass,
+	color,
+	refBtn,
+}: clickHandlerType) => {
 	return (
 		<>
 			<button
-				className={`gen-btn rounded-[5px] ${props.class} ${props.color}`}
-				onClick={(e) => (props.handleBtnClick ? props.handleBtnClick(e) : null)}
-				ref={ref}>
-				{props.name}
+				className={`gen-btn rounded-[5px] ${color} ${styleClass}`}
+				onClick={(e) => (handleBtnClick ? handleBtnClick(e) : null)}
+				ref={refBtn}>
+				{name}
 			</button>
 		</>
 	);
-});
+};
 export default GenBtn;

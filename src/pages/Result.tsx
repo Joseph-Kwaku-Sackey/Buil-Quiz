@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import resultStatusTryBtn from "../assets/img/refresh.svg";
 import resultStatusProeedBtn from "../assets/img/next-arrow.svg";
 import { Link, useSearchParams } from "react-router-dom";
-import { DataType} from "../utilities/DataFetches";
+import { DataType } from "../utilities/DataFetches";
 // import { LoaderSub } from "../components/Loader";
 
 type resultStateType = {

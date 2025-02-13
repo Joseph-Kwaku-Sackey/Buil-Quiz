@@ -50,28 +50,26 @@ const StatusView = (props: propsInter) => {
 				btnRef.current!.classList.add("gen-btn-anim");
 			}, 0);
 			btnRef.current!.classList.remove("gen-btn-anim");
-			modeTransitionDispatch({ type: "NOT_SELECTED" });
+			modeTransitionDispatch({ type: "SELECTED", payload: false });
+			modeTransitionDispatch({ type: "SELECTION_ERROR", payload: true });
+			sessionStorage.setItem("statusMode", JSON.stringify(false));
+			modeTransitionDispatch({
+				type: "SWITCH_STATUS_MODE",
+				payload: false,
+			});
 		} else {
 			sessionStorage.setItem("statusMode", JSON.stringify(true));
 			modeTransitionDispatch({
 				type: "SWITCH_STATUS_MODE",
-				payload: JSON.parse(sessionStorage.getItem("statusMode")!),
+				payload: true,
 			});
-			globalQuizValueStatusState.levelValue !== 100
-				? (globalQuizValueStatusDispatch({
-						type: "SET_PROGRESS_DIGIT_VALUE",
-				  }),
-				  globalQuizValueStatusDispatch({ type: "SET_LEVEL_VALUE" }))
-				: null;
-			globalQuizValueStatusDispatch({
-				type: "SET_ANSWER_STATE",
-				payload: props.questionData!.answer,
-			});
-
-			setQuestionsCompletedState((prev) => {
-				return [...prev, props.questionData!.id];
-			});
-
+			modeTransitionDispatch({ type: "SELECTION_ERROR", payload: false });
+			if (globalQuizValueStatusState.levelValue !== 100) {
+				globalQuizValueStatusDispatch({
+					type: "SET_PROGRESS_DIGIT_VALUE",
+				}),
+					globalQuizValueStatusDispatch({ type: "SET_LEVEL_VALUE" });
+			}
 			if (
 				globalQuizValueStatusState.optionValue !== props.questionData?.answer
 			) {
@@ -81,7 +79,14 @@ const StatusView = (props: propsInter) => {
 				});
 			}
 			globalQuizValueStatusDispatch({
-				type: "SET_CURRENT_QUESTIONS",
+				type: "SET_ANSWER_STATE",
+				payload: props.questionData!.answer,
+			});
+			setQuestionsCompletedState((prev) => {
+				return [...prev, props.questionData!.id];
+			});
+			globalQuizValueStatusDispatch({
+				type: "SET_CURRENT_QUESTION",
 				payload: props.questionData!.id,
 			});
 			globalQuizValueStatusDispatch({
@@ -169,14 +174,11 @@ const StatusView = (props: propsInter) => {
 			type: "SWITCH_STATUS_MODE",
 			payload: JSON.parse(sessionStorage.getItem("statusMode")!),
 		});
-		console.log(
-			globalQuizValueStatusState.answeredQuestions,
-			globalQuizValueStatusState.currentQuestions
-		);
+		console.log(globalQuizValueStatusState.currentQuestion);
 		globalQuizValueStatusDispatch({ type: "SET_NEXT_QUESTION" });
 		sessionStorage.setItem("isSelected", JSON.stringify(false));
 		sessionStorage.removeItem("selectedOption");
-		globalQuizValueStatusState.optionInputRef!.current!.checked = false;
+		// globalQuizValueStatusState.optionInputRef!.current!.checked = false;
 		globalQuizValueStatusDispatch({ type: "RESET_OPTION_VALUE" });
 		globalQuizValueStatusState.levelValue === 100
 			? navigate(`/category/${param.id}/result`)
@@ -213,11 +215,11 @@ const StatusView = (props: propsInter) => {
 
 						<GenBtn
 							color={"gen-btn-next-type-color"}
-							class={
+							styleClass={
 								"py-[.6em] px-[1.5em] absolute top-1/2 -translate-y-1/2 right-[1em]"
 							}
 							handleBtnClick={handleBtnNextClick}
-							ref={btnRef}
+							refBtn={btnRef}
 							name={"Next"}
 						/>
 					</>
@@ -226,9 +228,9 @@ const StatusView = (props: propsInter) => {
 					{!modeTransitionState.isStatusMode && (
 						<GenBtn
 							handleBtnClick={handleBtnSubmitClick}
-							ref={btnRef}
+							refBtn={btnRef}
 							name={"Submit"}
-							class="py-[.8em] px-[4em]"
+							styleClass="py-[.8em] px-[4em]"
 						/>
 					)}
 				</div>
