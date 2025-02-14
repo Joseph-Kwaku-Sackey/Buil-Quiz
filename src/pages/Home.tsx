@@ -5,9 +5,6 @@ const Home = () => {
 	return (
 		<>
 			<section className="home-container flex justify-center h-full select-none bg-[rgba(0,0,0,0.55)]">
-				<div>
-					{/* <BgAnimObjects /> */}
-				</div>
 				<div className=" flex flex-col my-8 items-center justify-center ">
 					<div className="flex flex-col relative  max-sm:w-[280px] tracking-tighter w-[465px]">
 						<h1 className="font-black bg-gradient-to-r from-[rgb(200,200,200)] to-[rgb(250,250,250)] text-transparent text-left text-[3rem] max-sm:text-[2.2rem] bg-clip-text leading-[1.5ch] ">
@@ -27,7 +24,7 @@ const Home = () => {
 						<button className="bg-gradient-to-tr from-[rgb(61,21,219)] to-[rgb(80,48,210)] hover:brightness-[1.2] text-white rounded-full px-16 py-3">
 							Let's Go
 						</button>
-					</Link>	
+					</Link>
 					<p className="max-sm:text-[.9rem] mt-36 text-[rgb(101,101,101)] ">
 						Embark on a free and educative adventure. <br /> Proceed{" "}
 						<span className="text-blue-500 ">without signing up/in</span>.

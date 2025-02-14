@@ -8,7 +8,7 @@ import "./styles/animationKeyframes.css";
 import { ContextApiProvider } from "./contextApi/ContextApi.tsx";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
-const client = new QueryClient({});
+const client = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
