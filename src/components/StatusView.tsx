@@ -78,12 +78,7 @@ const StatusView = (props: propsInter) => {
 					payload: props.questionData!.id,
 				});
 			}
-			if (globalQuizValueStatusState.levelValue <= 100) {
-				sessionStorage.setItem(
-					"answeredQuestions",
-					JSON.stringify(questionsCompletedState)
-				);
-			}
+			
 			globalQuizValueStatusDispatch({
 				type: "SET_ANSWER_STATE",
 				payload: props.questionData!.answer,

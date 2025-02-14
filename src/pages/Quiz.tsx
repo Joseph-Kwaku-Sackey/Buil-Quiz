@@ -65,7 +65,7 @@ const Content = () => {
 	const questionData = fetchData[val()];
 
 	return (
-		<div className="flex mt-20 justify-center items-center">
+		<div className="flex justify-center items-center">
 			<article className="quiz-container mx-4 w-[400px] mb-14">
 				{!modeTransitionState.isViewScoreMode && (
 					<>

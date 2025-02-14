@@ -1,5 +1,5 @@
 import BackArrow from "../assets/img/back-arrow.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { funcReset } from "../utilities/CommonFunc";
 import { useContextApi } from "../customHooks/customHooks";
 
@@ -7,9 +7,17 @@ const BackBtn = () => {
 	const { globalQuizValueStatusDispatch, modeTransitionDispatch } =
 		useContextApi();
 	const navigate = useNavigate();
+	const location = useLocation();
+	const param = useParams();
+	console.log(location.pathname);
+	
 
 	const handleBackClick = () => {
-		navigate("/category");
+		if (location.pathname === `/category/${param}/result`) {
+			funcReset("logo", globalQuizValueStatusDispatch, modeTransitionDispatch);
+			navigate("/category");
+		} 
+		navigate(-1);
 		funcReset("logo", globalQuizValueStatusDispatch, modeTransitionDispatch);
 	};
 
