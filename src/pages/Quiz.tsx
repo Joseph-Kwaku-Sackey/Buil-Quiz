@@ -2,7 +2,7 @@
 import InputLabel from "../components/InputLabel";
 import StatusView from "../components/StatusView";
 import { useContextApi, useQueryData } from "../customHooks/customHooks";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DataType } from "../utilities/DataFetches";
 import { nanoid } from "nanoid";
@@ -35,7 +35,7 @@ const Content = () => {
 		}
 	};
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		fetchDataLenghtVar = fetchDataLength;
 		fetchDataExpo = fetchData;
 		const random = Math.floor(Math.random() * fetchDataLength);
@@ -56,11 +56,6 @@ const Content = () => {
 			payload: params.id!,
 		});
 	}, []);
-
-	// let questionData ;
-	// for ( let question of fetchData){
-	// 	questionData = question
-	// }
 
 	const questionData = fetchData[val()];
 
