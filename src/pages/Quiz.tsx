@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DataType } from "../utilities/DataFetches";
 import { nanoid } from "nanoid";
-import Error from "../components/Error";
 
 export type LoaderArgsType = { params: { id: string } };
 
