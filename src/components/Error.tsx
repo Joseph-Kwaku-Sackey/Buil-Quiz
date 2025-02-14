@@ -14,12 +14,12 @@ const Error = () => {
 				<div className="relative ">
 					<h2 className="text-[1.1rem] bg-[rgba(32,35,39,0.63)] py-4 px-8 rounded-full backdrop-blur-3xl font-bold">
 						{errorData.status ? `${errorData.status} -` : null}
-						{errorData.message}
+						{errorData.message || "something Happened"}
 					</h2>
 					<div className="mt-32">
 						<h2
 							className=" text-[.9rem] text-gray-400 underline underline-offset-4"
-							onClick={() => navigate(-1)}>
+							onClick={() => navigate("/category")}>
 							Send me back
 						</h2>
 					</div>

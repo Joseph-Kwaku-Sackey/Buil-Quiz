@@ -27,8 +27,11 @@ const Content = () => {
 
 	const val = (): number => {
 		if (globalQuizValueStatusState.nextQuestion === 0) {
+			console.log("nextValue", globalQuizValueStatusState.nextQuestion);
+
 			return randomValue;
 		} else {
+			console.log("nextValue", globalQuizValueStatusState.nextQuestion);
 			return globalQuizValueStatusState.nextQuestion;
 		}
 	};
@@ -60,8 +63,6 @@ const Content = () => {
 	// 	questionData = question
 	// }
 
-	// console.log(globalQuizValueStatusState.nextQuestion, randomValue);
-
 	const questionData = fetchData[val()];
 
 	return (
@@ -84,19 +85,17 @@ const Content = () => {
 						<section>
 							<form>
 								<div>
-									{questionData ? (
-										questionData.options.map((value, i) => {
-											return (
-												<InputLabel
-													key={nanoid()}
-													option={value}
-													id={i}
-												/>
-											);
-										})
-									) : (
-										<Error />
-									)}
+									{questionData
+										? questionData.options.map((value, i) => {
+												return (
+													<InputLabel
+														key={nanoid()}
+														option={value}
+														id={i}
+													/>
+												);
+										  })
+										: "something"}
 								</div>
 								<StatusView questionData={questionData} />
 							</form>

@@ -11,7 +11,7 @@ export const funcReset = (
 	const commonSetters = () => {
 		sessionStorage.removeItem("levelState");
 		global({ type: "RESET_LEVEL_VALUE" });
-		sessionStorage.removeItem("incorrectAnswer");
+		sessionStorage.setItem("incorrectAnswer", JSON.stringify([]));
 		global({ type: "RESET_INCORRECT_ANSWER" });
 		sessionStorage.removeItem("progress");
 		global({ type: "RESET_PROGRESS_DIGIT_VALUE" });
