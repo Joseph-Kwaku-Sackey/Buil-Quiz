@@ -12,14 +12,13 @@ type childrenType = {
 	children: ReactNode;
 };
 
-
-
 // global value context holder
 export const ContextApiProvider = ({ children }: childrenType) => {
 	const [modeTransitionState, modeTransitionDispatch] = useReducer(
 		modeTransitionReducer,
 		modeTransitionInitialState
 	);
+
 	const [globalQuizValueStatusState, globalQuizValueStatusDispatch] =
 		useReducer(globalQuizValueReducer, globalQuizValueStatusInitialstate);
 

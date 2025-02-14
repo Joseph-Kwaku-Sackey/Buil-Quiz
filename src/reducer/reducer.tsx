@@ -151,12 +151,12 @@ export const globalQuizValueReducer = (
 		case "SET_CURRENT_QUESTION":
 			return {
 				...state,
-				currentQuestion: { ...state, currentQuestion: action.payload },
+				currentQuestion: action.payload,
 			};
 		case "RESET_CURRENT_QUESTION":
 			return {
 				...state,
-				currentQuestions: 0,
+				currentQuestion: 0,
 			};
 
 		case "RESET_PROGRESS_DIGIT_VALUE":

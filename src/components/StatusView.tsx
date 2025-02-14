@@ -78,7 +78,7 @@ const StatusView = (props: propsInter) => {
 					payload: props.questionData!.id,
 				});
 			}
-			
+
 			globalQuizValueStatusDispatch({
 				type: "SET_ANSWER_STATE",
 				payload: props.questionData!.answer,
@@ -114,11 +114,11 @@ const StatusView = (props: propsInter) => {
 				"levelState",
 				JSON.stringify(globalQuizValueStatusState.levelValue)
 			);
-				sessionStorage.setItem(
-					"answeredQuestions",
-					JSON.stringify(questionsCompletedState)
-				);
-			
+			sessionStorage.setItem(
+				"answeredQuestions",
+				JSON.stringify(questionsCompletedState)
+			);
+
 			if (
 				globalQuizValueStatusState.answerValue &&
 				globalQuizValueStatusState.answerValue ===
@@ -248,8 +248,10 @@ export default StatusView;
 
 export const SpanLoader = (props: refType) => {
 	return (
-		<span
-			className={props.class}
-			ref={props.refValue}></span>
+		<>
+			<span
+				className={props.class}
+				ref={props.refValue}></span>
+		</>
 	);
 };

@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import Loader from "./Loader";
 
 const Layout = () => {
-	const location = useLocation()
+	const location = useLocation();
 	return (
 		<>
 			<div className="webpage-container">
@@ -15,7 +15,7 @@ const Layout = () => {
 				</header>
 				<main className="flex-1 flex gap-5 flex-col">
 					{location.pathname !== "/" && <BackBtn />}
-					<Suspense fallback={<Loader/>}> 
+					<Suspense fallback={<Loader />}>
 						<Outlet />
 					</Suspense>
 				</main>

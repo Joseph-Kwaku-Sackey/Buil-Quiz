@@ -9,7 +9,6 @@ const BackBtn = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const param = useParams();
-	console.log(location.pathname);
 	
 
 	const handleBackClick = () => {

@@ -30,3 +30,4 @@ export const useQueryData = (param: Params<string>) => {
 	return { fetchData };
 };
 
+
