@@ -55,7 +55,7 @@ const Content = () => {
 			type: "CATEGORY_TYPE_PARAM",
 			payload: params.id!,
 		});
-	}, []);
+	}, [globalQuizValueStatusState.currentQuestion]);
 
 	const questionData = fetchData[val()];
 
