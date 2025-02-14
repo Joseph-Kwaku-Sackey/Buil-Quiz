@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DataType } from "../utilities/DataFetches";
 import { nanoid } from "nanoid";
+import Error from "../components/Error";
 
 export type LoaderArgsType = { params: { id: string } };
 
@@ -23,6 +24,14 @@ const Content = () => {
 	const { fetchData } = useQueryData(params);
 
 	const fetchDataLength = fetchData.length;
+
+	const val = (): number => {
+		if (globalQuizValueStatusState.nextQuestion === 0) {
+			return randomValue;
+		} else {
+			return globalQuizValueStatusState.nextQuestion;
+		}
+	};
 
 	useEffect(() => {
 		fetchDataLenghtVar = fetchDataLength;
@@ -46,8 +55,14 @@ const Content = () => {
 		});
 	}, []);
 
-	const questionData =
-		fetchData[globalQuizValueStatusState.nextQuestion || randomValue];
+	// let questionData ;
+	// for ( let question of fetchData){
+	// 	questionData = question
+	// }
+
+	// console.log(globalQuizValueStatusState.nextQuestion, randomValue);
+
+	const questionData = fetchData[val()];
 
 	return (
 		<div className="flex mt-20 justify-center items-center">
@@ -69,15 +84,19 @@ const Content = () => {
 						<section>
 							<form>
 								<div>
-									{questionData?.options.map((value, i) => {
-										return (
-											<InputLabel
-												key={nanoid()}
-												option={value}
-												id={i}
-											/>
-										);
-									})}
+									{questionData ? (
+										questionData.options.map((value, i) => {
+											return (
+												<InputLabel
+													key={nanoid()}
+													option={value}
+													id={i}
+												/>
+											);
+										})
+									) : (
+										<Error />
+									)}
 								</div>
 								<StatusView questionData={questionData} />
 							</form>

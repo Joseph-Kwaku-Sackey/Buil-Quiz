@@ -5,6 +5,7 @@ import resultStatusTryBtn from "../assets/img/refresh.svg";
 import resultStatusProeedBtn from "../assets/img/next-arrow.svg";
 import { Link, useSearchParams } from "react-router-dom";
 import { DataType } from "../utilities/DataFetches";
+import { funcReset } from "../utilities/CommonFunc";
 // import { LoaderSub } from "../components/Loader";
 
 type resultStateType = {
@@ -36,7 +37,7 @@ const Result = () => {
 				setIncorrectValue((prev) => [...prev, question]);
 			}
 		});
-		console.log(incorrectAns);
+		incorrectAns;
 	}, []);
 
 	useLayoutEffect(() => {
@@ -62,18 +63,6 @@ const Result = () => {
 			solutionDisplayRef.current?.classList.remove("category-scroll");
 			clearTimeout(timeoutId);
 		}, 3000);
-	};
-
-	const handleResultProceedClick = () => {
-		sessionStorage.removeItem("levelState");
-		globalQuizValueStatusDispatch({ type: "RESET_LEVEL_VALUE" });
-		sessionStorage.removeItem("incorrectAnswer");
-		globalQuizValueStatusDispatch({ type: "RESET_INCORRECT_ANSWER" });
-		sessionStorage.removeItem("progress");
-		globalQuizValueStatusDispatch({ type: "RESET_PROGRESS_DIGIT_VALUE" });
-		sessionStorage.removeItem("finalScore");
-		globalQuizValueStatusDispatch({ type: "RESET_FINAL_SCORE" });
-		globalQuizValueStatusDispatch({ type: "SET_QUIZ_LEVEL" });
 	};
 
 	const handleSolutionClick = () => {
@@ -169,7 +158,9 @@ const Result = () => {
 							</p>
 							<Link
 								to=".."
-								onClick={handleResultProceedClick}
+								onClick={() =>
+									funcReset("proceedBtn", globalQuizValueStatusDispatch)
+								}
 								relative="path"
 								className="">
 								<button

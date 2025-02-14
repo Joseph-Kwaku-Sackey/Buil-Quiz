@@ -88,7 +88,9 @@ export type GlobalQuizValueStatusActionType = [
 			| "RESET_FINAL_SCORE"
 			| "SET_QUIZ_LEVEL"
 			| "RESET_INCORRECT_ANSWER"
-			| "RESET_CURRENT_QUESTION";
+			| "RESET_CURRENT_QUESTION"
+			| "RESET_ANSWERED_QUESTIONS"
+			| "RESET_SELECTED_OPTION_VALUE";
 	},
 	{
 		type: "SET_OPTION_VALUE" | "SET_ANSWER_STATE" | "CATEGORY_TYPE_PARAM";
@@ -195,6 +197,21 @@ export const globalQuizValueReducer = (
 			return {
 				...state,
 				incorrectAnswers: [],
+			};
+		case "RESET_ANSWERED_QUESTIONS":
+			return {
+				...state,
+				answeredQuestions: [],
+			};
+		case "RESET_SELECTED_OPTION_VALUE":
+			return {
+				...state,
+				optionValue: "",
+			};
+		case "RESET_CURRENT_QUESTION":
+			return {
+				...state,
+				currentQuestion: 0,
 			};
 
 		default:

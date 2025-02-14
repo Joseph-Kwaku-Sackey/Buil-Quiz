@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { getQuestion } from "../utilities/DataFetches";
 import { Params } from "react-router-dom";
 
+
 export const useContextApi = () => {
 	const {
 		modeTransitionState,
@@ -28,3 +29,4 @@ export const useQueryData = (param: Params<string>) => {
 
 	return { fetchData };
 };
+

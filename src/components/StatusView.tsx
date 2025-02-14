@@ -28,7 +28,7 @@ const StatusView = (props: propsInter) => {
 	} = useContextApi();
 	const [questionsCompletedState, setQuestionsCompletedState] = useState<
 		number[]
-	>(JSON.parse(sessionStorage.getItem("completedQuestions")!) || []);
+	>(JSON.parse(sessionStorage.getItem("answeredQuestions")!) || []);
 	const navigate = useNavigate();
 	const param = useParams();
 	const btnRef = useRef<HTMLButtonElement | null>(null);
@@ -78,6 +78,12 @@ const StatusView = (props: propsInter) => {
 					payload: props.questionData!.id,
 				});
 			}
+			if (globalQuizValueStatusState.levelValue <= 100) {
+				sessionStorage.setItem(
+					"answeredQuestions",
+					JSON.stringify(questionsCompletedState)
+				);
+			}
 			globalQuizValueStatusDispatch({
 				type: "SET_ANSWER_STATE",
 				payload: props.questionData!.answer,
@@ -113,10 +119,11 @@ const StatusView = (props: propsInter) => {
 				"levelState",
 				JSON.stringify(globalQuizValueStatusState.levelValue)
 			);
-			sessionStorage.setItem(
-				"completedQuestions",
-				JSON.stringify(questionsCompletedState)
-			);
+				sessionStorage.setItem(
+					"answeredQuestions",
+					JSON.stringify(questionsCompletedState)
+				);
+			
 			if (
 				globalQuizValueStatusState.answerValue &&
 				globalQuizValueStatusState.answerValue ===
@@ -174,7 +181,6 @@ const StatusView = (props: propsInter) => {
 			type: "SWITCH_STATUS_MODE",
 			payload: JSON.parse(sessionStorage.getItem("statusMode")!),
 		});
-		console.log(globalQuizValueStatusState.currentQuestion);
 		globalQuizValueStatusDispatch({ type: "SET_NEXT_QUESTION" });
 		sessionStorage.setItem("isSelected", JSON.stringify(false));
 		sessionStorage.removeItem("selectedOption");
