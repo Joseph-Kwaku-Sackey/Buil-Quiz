@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import GenBtn from "./GenBtn";
 import CorrectIcon from "../assets/img/correctBtn.svg";
 import WrongIcon from "../assets/img/WrongBtn.svg";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 interface propsInter {
 	questionData: {
@@ -29,12 +28,9 @@ const StatusView = (props: propsInter) => {
 	const [questionsCompletedState, setQuestionsCompletedState] = useState<
 		number[]
 	>(JSON.parse(sessionStorage.getItem("answeredQuestions")!) || []);
-	const navigate = useNavigate();
-	const param = useParams();
 	const btnRef = useRef<HTMLButtonElement | null>(null);
 	const statusIconRef = useRef<HTMLImageElement | null>(null);
 	const spanLoaderRef = useRef<HTMLSpanElement | null>(null);
-	const [_, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		modeTransitionDispatch({
@@ -179,12 +175,11 @@ const StatusView = (props: propsInter) => {
 		globalQuizValueStatusDispatch({ type: "SET_NEXT_QUESTION" });
 		sessionStorage.setItem("isSelected", JSON.stringify(false));
 		sessionStorage.removeItem("selectedOption");
-		// globalQuizValueStatusState.optionInputRef!.current!.checked = false;
 		globalQuizValueStatusDispatch({ type: "RESET_OPTION_VALUE" });
-		globalQuizValueStatusState.levelValue === 100
-			? navigate(`/category/${param.id}/result`)
-			: null;
-		setSearchParams(`cat=${param.id}`);
+		if (globalQuizValueStatusState.levelValue === 100) {
+			modeTransitionDispatch({ type: "ISCOMPLETED", payload: true });
+			sessionStorage.setItem("isCompleted", JSON.stringify(true))
+		}
 	};
 
 	return (

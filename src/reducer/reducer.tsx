@@ -6,6 +6,7 @@ export type ModeTransitionInitialStateType = {
 	isSelectionError: boolean;
 	isStatusMode: boolean;
 	isViewScoreMode: boolean;
+	isCompleted: boolean;
 	answerState: string;
 };
 export const modeTransitionInitialState: ModeTransitionInitialStateType = {
@@ -13,6 +14,7 @@ export const modeTransitionInitialState: ModeTransitionInitialStateType = {
 	isSelectionError: false,
 	isStatusMode: JSON.parse(sessionStorage.getItem("statusMode")!) || false,
 	isViewScoreMode: false,
+	isCompleted: JSON.parse(sessionStorage.getItem("isCompleted")!) || false,
 	answerState: "",
 };
 
@@ -26,7 +28,8 @@ export type ModeTransitionActionMainType = [
 			| "SWITCH_STATUS_MODE"
 			| "SELECTION_ERROR"
 			| "SELECTED"
-			| "VIEW_SCORE_MODE";
+			| "VIEW_SCORE_MODE"
+			| "ISCOMPLETED";
 		payload: boolean;
 	}
 ];
@@ -47,6 +50,9 @@ export const modeTransitionReducer = (
 				...state,
 				isStatusMode: action.payload,
 			};
+
+		case "ISCOMPLETED":
+			return { ...state, isCompleted: action.payload };
 
 		case "VIEW_SCORE_MODE":
 			return { ...state, isViewScoreMode: action.payload };

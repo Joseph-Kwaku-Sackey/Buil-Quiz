@@ -17,7 +17,6 @@
 	row-gap: 1em;
 	box-shadow: 4px 5px 20px rgba(0, 0, 0, 0.296);
 	transition: all 0.4s ease-out;
-	
 	font-size: var(--large-font);
 	font-weight: 700;
 }

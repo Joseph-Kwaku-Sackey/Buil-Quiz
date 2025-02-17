@@ -7,6 +7,7 @@ interface CategoryBtnDataType {
 	id: number;
 	path: string;
 	textContent: string;
+	isActive: boolean;
 }
 
 const Category = () => {
@@ -22,6 +23,10 @@ const Category = () => {
 			clearTimeout(timeoutId);
 		}, 3000);
 	};
+
+	const handleFocus = () => {
+		categoryContainerRef.current?.scrollIntoView({behavior:"smooth"})
+	}
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFilteredBtn([]);
@@ -61,9 +66,10 @@ const Category = () => {
 				<div>
 					<input
 						type="text"
-						className="rounded-xl text-center py-2 px-6 relative top-5 bg-transparent focus:outline-1 outline-none focus:border-[#b6f8ff9f] border border-[hsl(0,0%,20%)] placeholder:text-[hsl(0,0%,30%)] "
+						className="rounded-lg text-center py-2 px-6 relative top-5 bg-transparent focus:outline-2 outline-none focus:border-[#3777ac] border-2 border-[hsl(0,0%,20%)] placeholder:text-[hsl(0,0%,30%)] "
 						placeholder="search category..."
 						onChange={(e) => handleSearchChange(e)}
+						onFocus={handleFocus}
 						value={getSearchParams ? getSearchParams : ""}
 					/>
 				</div>
@@ -77,20 +83,20 @@ const Category = () => {
 						} max-sm:grid-cols-1  place-items-center h-fit gap-y-5 gap-x-20 relative  `}>
 						{!getSearchParams
 							? categoryBtnData.map((btn) => {
-									return (
+									return btn.isActive ? (
 										<SubGenBtn
 											key={btn.id}
 											path={btn.path}
 											textContent={btn.textContent}></SubGenBtn>
-									);
+									) : null;
 							  })
 							: filteredBtn.map((btn) => {
-									return (
+									return btn.isActive ? (
 										<SubGenBtn
 											key={btn.id}
 											path={btn.path}
 											textContent={btn.textContent}></SubGenBtn>
-									);
+									) : null;
 							  })}
 						{!filteredBtn.length && getSearchParams ? (
 							<h2 className="text-[1.1rem] relative top-[10vh] font-bold bg-[rgba(0,0,0,0.1)] py-4 px-8 rounded-xl text-[hsl(0,0%,40%)]">

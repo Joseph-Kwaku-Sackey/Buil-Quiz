@@ -10,7 +10,6 @@ import {
 	Route,
 } from "react-router-dom";
 import Home from "./pages/Home";
-import Result from "../src/pages/Result";
 import Category from "./pages/Category";
 
 function App() {
@@ -32,10 +31,6 @@ function App() {
 					<Route
 						path="category/:id"
 						element={<Quiz />}
-					/>
-					<Route
-						path="category/:id/result"
-						element={<Result />}
 					/>
 				</Route>
 				<Route

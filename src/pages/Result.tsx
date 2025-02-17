@@ -2,8 +2,8 @@
 import { useContextApi, useQueryData } from "../customHooks/customHooks";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import resultStatusTryBtn from "../assets/img/refresh.svg";
-import resultStatusProeedBtn from "../assets/img/next-arrow.svg";
-import { Link, useSearchParams } from "react-router-dom";
+import resultStatusProceedBtn from "../assets/img/next-arrow.svg";
+import { useParams} from "react-router-dom";
 import { DataType } from "../utilities/DataFetches";
 import { funcReset } from "../utilities/CommonFunc";
 // import { LoaderSub } from "../components/Loader";
@@ -20,16 +20,20 @@ const Result = () => {
 	});
 	const [resultValueState, setResultValueState] = useState<number>(0);
 	const [incorrectValue, setIncorrectValue] = useState<DataType[] | []>([]);
-	const { globalQuizValueStatusState, globalQuizValueStatusDispatch } =
-		useContextApi();
+	const {
+		globalQuizValueStatusState,
+		globalQuizValueStatusDispatch,
+		modeTransitionDispatch,
+	} = useContextApi();
 	const resultValueRef = useRef<HTMLParagraphElement | null>(null);
 	const resultProceedBtnRef = useRef<HTMLButtonElement | null>(null);
 	const solutionBtnContainerRef = useRef<HTMLDivElement | null>(null);
 	const resultStatusTextRef = useRef<HTMLParagraphElement | null>(null);
 	const solutionDisplayRef = useRef<HTMLDivElement | null>(null);
 	const motivateTextRef = useRef<HTMLParagraphElement | null>(null);
-	const [searchParams, _] = useSearchParams();
-	const { fetchData } = useQueryData({ id: searchParams.get("cat") as string });
+	const param = useParams();
+
+	const { fetchData } = useQueryData({ id: param.id as string });
 
 	useEffect(() => {
 		const incorrectAns = fetchData.map((question) => {
@@ -41,17 +45,27 @@ const Result = () => {
 	}, []);
 
 	useLayoutEffect(() => {
-		let innitialCountState = 0;
+		let initialCountState = 0;
 		const intervalId = setInterval(() => {
 			if (globalQuizValueStatusState.finalScore !== 0) {
-				innitialCountState += 1;
+				initialCountState += 1;
 				setResultValueState((prev) => (prev += 1));
-				if (innitialCountState === globalQuizValueStatusState.finalScore) {
+				if (initialCountState === globalQuizValueStatusState.finalScore) {
 					clearInterval(intervalId);
 				}
-			}
+			}``
 		}, 0);
 	}, []);
+
+	const handleResultProceedClick = () => {
+		funcReset(
+			"proceedBtn",
+			globalQuizValueStatusDispatch,
+			modeTransitionDispatch
+		);
+		modeTransitionDispatch({ type: "ISCOMPLETED", payload: false });
+		sessionStorage.setItem("isCompleted", JSON.stringify(false));
+	};
 
 	const resultCompare = () => {
 		return globalQuizValueStatusState.finalScore >= resultState.averageScore;
@@ -117,7 +131,7 @@ const Result = () => {
 	useEffect(() => {
 		const isSolutionDisplayRef = solutionDisplayRef.current;
 		if (resultState.viewSolution) {
-			isSolutionDisplayRef?.animate([{ maxHeight: "300px", display: "flex" }], {
+			isSolutionDisplayRef?.animate([{ maxHeight: "300px", marginTop:"20px", display: "flex" }], {
 				duration: 500,
 				fill: "forwards",
 				easing: "ease-out",
@@ -127,8 +141,8 @@ const Result = () => {
 
 	return (
 		<>
-			<main className=" mt-[3em]">
-				<section className={` flex justify-center `}>
+			<main className="mb-8">
+				<section className="flex justify-center ">
 					<div className=" flex flex-col items-center">
 						<div className="flex flex-col items-center relative">
 							<p
@@ -147,7 +161,7 @@ const Result = () => {
 								{`${resultValueState}%`}
 							</p>
 							<p
-								className="relative top-3 mb-2 opacity-0"
+								className="relative top-3 mb-4 opacity-0"
 								ref={resultStatusTextRef}
 								style={{
 									color: `${
@@ -156,39 +170,30 @@ const Result = () => {
 								}}>
 								{resultCompare() ? "Congratulations!" : "try again!"}
 							</p>
-							<Link
-								to=".."
-								onClick={() =>
-									funcReset("proceedBtn", globalQuizValueStatusDispatch)
-								}
-								relative="path"
-								className="">
-								<button
-									className="opacity-0 my-2 rounded-full relative w-[90px] h-[45px] grid place-content-center "
-									ref={resultProceedBtnRef}
-									style={{
-										backgroundColor: `${
-											resultCompare()
-												? " hsla(120,24%,9%,1)"
-												: "hsla(0,24%,9%,1)"
-										}`,
-										border: `solid 1px  ${
-											resultCompare()
-												? " hsla(120,24%,15%,1)"
-												: "hsla(0,24%,15%,1)"
-										}`,
-									}}>
-									<img
-										src={
-											resultCompare()
-												? resultStatusProeedBtn
-												: resultStatusTryBtn
-										}
-										alt="result-status-icon"
-										width={resultCompare() ? 23 : 18}
-									/>
-								</button>
-							</Link>
+							<button
+								className="opacity-0 my-2 rounded-full relative w-[90px] h-[45px] grid place-content-center "
+								ref={resultProceedBtnRef}
+								onClick={handleResultProceedClick}
+								style={{
+									backgroundColor: `${
+										resultCompare() ? " hsla(120,24%,9%,1)" : "hsla(0,24%,9%,1)"
+									}`,
+									border: `solid 1px  ${
+										resultCompare()
+											? " hsla(120,24%,15%,1)"
+											: "hsla(0,24%,15%,1)"
+									}`,
+								}}>
+								<img
+									src={
+										resultCompare()
+											? resultStatusProceedBtn
+											: resultStatusTryBtn
+									}
+									alt="result-status-icon"
+									width={resultCompare() ? 23 : 18}
+								/>
+							</button>
 						</div>
 						<section className="flex justify-center max-sm:w-[80%]">
 							{globalQuizValueStatusState.finalScore !== 100 && (
@@ -198,7 +203,7 @@ const Result = () => {
 											className="flex justify-center opacity-0"
 											ref={solutionBtnContainerRef}>
 											<button
-												className="bg-[rgba(33,33,33,0.72)] text-nowrap transition-all duration-[.3s] hover:bg-[rgb(33,33,33)] px-[3em] rounded-full py-[1em] text-[rgb(21,152,167)]"
+												className="bg-[rgba(33,33,33)] text-nowrap transition-all duration-[.3s] hover:brightness-125 px-[3em] rounded-full py-[1em] text-green-500"
 												onClick={handleSolutionClick}>
 												View Solution
 											</button>
@@ -206,7 +211,7 @@ const Result = () => {
 									)}
 									{resultState.viewSolution && (
 										<div
-											className="bg-[rgba(106,106,106,0.119)] p-[2em] max-sm:p-[1.3em] w-[400px] rounded-[10px] mt-6 overflow-scroll solution-container flex-col gap-4 max-h-0 "
+											className="bg-[rgba(106,106,106,0.119)] p-[2em] max-sm:p-[1.3em] w-[400px] rounded-[10px] overflow-scroll solution-container flex-col gap-4 max-h-0 "
 											onScroll={handleScroll}
 											ref={solutionDisplayRef}>
 											{incorrectValue.map((value, i) => {

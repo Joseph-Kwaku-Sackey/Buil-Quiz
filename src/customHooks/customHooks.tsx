@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { getQuestion } from "../utilities/DataFetches";
 import { Params } from "react-router-dom";
 
+
 export const useContextApi = () => {
 	const {
 		modeTransitionState,
@@ -24,8 +25,10 @@ export const useQueryData = (param: Params<string>) => {
 	const { data: fetchData } = useSuspenseQuery({
 		queryKey: ["quizData"],
 		queryFn: () => getQuestion(param),
-		refetchOnMount: true,
+		
 	});
 
 	return { fetchData };
 };
+
+

@@ -1,107 +1,128 @@
-export const 	categoryBtnData = [
+export const categoryBtnData = [
 	{
 		id: 1,
 		path: "/category/general-knowledge",
 		textContent: " General Knowledge",
+		isActive: true,
 	},
 	{
 		id: 2,
 		path: "/category/science",
 		textContent: "Science",
+		isActive: true,
 	},
 	{
 		id: 3,
 		path: "/category/it",
 		textContent: "I.T",
+		isActive: true,
 	},
 	{
 		id: 4,
 		path: "/category/geography",
-		textContent: " Geography",	
+		textContent: " Geography",
+		isActive: true,
 	},
 	{
 		id: 5,
 		path: "/category/mathematics",
 		textContent: "Mathematics",
+		isActive: true,
 	},
 	{
 		id: 6,
 		path: "/category/sociology",
 		textContent: "Sociology",
+		isActive: true,
 	},
 	{
 		id: 7,
 		path: "/category/economics",
 		textContent: "Economics",
+		isActive: true,
 	},
 	{
 		id: 8,
 		path: "/category/art",
 		textContent: "Art",
+		isActive: true,
 	},
 	{
 		id: 9,
 		path: "/category/business",
 		textContent: "Business",
+		isActive: true,
 	},
 	{
 		id: 10,
 		path: "/category/home-science",
 		textContent: "Home Science",
+		isActive: true,
 	},
 	{
 		id: 11,
 		path: "/category/agriculture",
 		textContent: "Agriculture",
+		isActive: true,
 	},
 	{
 		id: 12,
 		path: "/category/psychology",
 		textContent: "Psychology",
+		isActive: true,
 	},
 	{
 		id: 13,
 		path: "/category/literature",
 		textContent: "Literature",
+		isActive: true,
 	},
 	{
 		id: 14,
 		path: "/category/physical-education",
 		textContent: "Physical Education",
+		isActive: false,
 	},
 	{
 		id: 15,
 		path: "/category/music",
 		textContent: "Music",
+		isActive: true,
 	},
 	{
 		id: 16,
 		path: "/category/electrial-engineering",
 		textContent: "Electrical Engineering",
+		isActive: true,
 	},
 	{
 		id: 17,
 		path: "/category/special-education",
 		textContent: "Special Education",
+		isActive: true,
 	},
 	{
 		id: 18,
 		path: "/category/history",
 		textContent: "History",
+		isActive: true,
 	},
 	{
 		id: 19,
 		path: "/category/for-kids",
 		textContent: "For Kids",
+		isActive: false,
 	},
-		{
+	{
 		id: 20,
 		path: "/category/political science",
 		textContent: "Political Science",
+		isActive: true,
 	},
-  {
-    id: 21,
-    path: "/category/mechanical-engineering",
-    textContent: "Mechanical Engineering",
-  },
+	{
+		id: 21,
+		path: "/category/mechanical-engineering",
+		textContent: "Mechanical Engineering",
+		isActive: false,
+	},
 ];

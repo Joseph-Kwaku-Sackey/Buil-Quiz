@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { DataType } from "../utilities/DataFetches";
 import { nanoid } from "nanoid";
 import Error from "../components/Error";
+import Result from "./Result";
 
 export type LoaderArgsType = { params: { id: string } };
 
@@ -27,11 +28,8 @@ const Content = () => {
 
 	const val = (): number => {
 		if (globalQuizValueStatusState.nextQuestion === 0) {
-			console.log("nextValue", globalQuizValueStatusState.nextQuestion);
-
 			return randomValue;
 		} else {
-			console.log("nextValue", globalQuizValueStatusState.nextQuestion);
 			return globalQuizValueStatusState.nextQuestion;
 		}
 	};
@@ -61,44 +59,52 @@ const Content = () => {
 	const questionData = fetchData[val()];
 
 	return (
-		<div className="flex justify-center items-center">
-			<article className="quiz-container mx-4 w-[400px] mb-14">
-				{!modeTransitionState.isViewScoreMode && (
-					<>
-						<section className="text-left flex flex-col">
-							<h2 className="quiz-container__question ">
-								{questionData?.question}
-							</h2>
-							{modeTransitionState.isSelectionError && (
-								<div className="h-[25px]">
-									<p className="error-message font-bold">
-										Select an option to proceed
-									</p>
-								</div>
-							)}
-						</section>
-						<section>
-							<form>
-								<div>
-									{questionData
-										? questionData.options.map((value, i) => {
-												return (
-													<InputLabel
-														key={nanoid()}
-														option={value}
-														id={i}
-													/>
-												);
-										  })
-										: <Error/>}
-								</div>
-								<StatusView questionData={questionData} />
-							</form>
-						</section>
-					</>
+		<>
+			<div className="flex justify-center h-full items-center">
+				{!modeTransitionState.isCompleted ? (
+					<article className="quiz-container mb-20 w-[400px]">
+						{!modeTransitionState.isViewScoreMode && (
+							<>
+								<section className="text-left flex flex-col">
+									<h2 className="quiz-container__question ">
+										{questionData?.question}
+									</h2>
+									{modeTransitionState.isSelectionError && (
+										<div className="h-[25px]">
+											<p className="error-message font-bold">
+												Select an option to proceed
+											</p>
+										</div>
+									)}
+								</section>
+								<section>
+									<form>
+										<div>
+											{questionData.options ? (
+												questionData.options.map((value, i) => {
+													return (
+														<InputLabel
+															key={nanoid()}
+															option={value}
+															id={i}
+														/>
+													);
+												})
+											) : (
+												<Error />
+											)}
+										</div>
+										<StatusView questionData={questionData} />
+									</form>
+								</section>
+							</>
+						)}
+					</article>
+				) : (
+					<Result />
 				)}
-			</article>
-		</div>
+			</div>
+		</>
 	);
 };
 export default Content;
