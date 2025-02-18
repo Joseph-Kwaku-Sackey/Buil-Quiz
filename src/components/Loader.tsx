@@ -29,7 +29,7 @@ const Loader = () => {
 
 	return (
 		<div className="loader-container">
-			<div className="loader quiz-container flex flex-col mb-20 mx-4 gap-4 py-6 px-8 w-[400px] rounded-[20px] ">
+			<div className="loader quiz-container flex flex-col mb-[120px] mx-4 gap-4 py-6 px-8 w-[400px] rounded-[20px] ">
 				<div className="flex flex-col mb-2 gap-2">
 					<div
 						style={styles.secondaryColor}
@@ -38,7 +38,7 @@ const Loader = () => {
 						style={styles.secondaryColor}
 						className=" w-[80%] rounded-full h-[10px]"></div>
 				</div>
-				<div className="flex flex-col gap-6">	
+				<div className="flex flex-col gap-6">
 					<InputLabelLoader style={styles.secondaryColor} />
 					<InputLabelLoader style={styles.secondaryColor} />
 					<InputLabelLoader style={styles.secondaryColor} />

@@ -13,13 +13,13 @@ const Home = () => {
 			<section className="home-container flex justify-center h-full select-none bg-[rgba(0,0,0,0.55)]">
 				<div className=" flex flex-col my-8 items-center gap-32 justify-center ">
 					<div className="flex flex-col relative max-sm:overflow-clip max-sm:w-[320px] tracking-tighter w-[465px]">
-						<h1 className="font-black bg-gradient-to-r from-[rgb(244,207,207)] to-[rgb(250,250,250)] text-transparent text-left text-[3rem] max-sm:text-[2.8rem] bg-clip-text leading-[1.5ch] ">
+						<h1 className="font-black bg-gradient-to-r from-[rgb(244,207,207)] to-[rgb(250,250,250)] text-transparent text-left text-[3rem] max-sm:text-[2.4rem] bg-clip-text leading-[1.5ch] ">
 							Explore over{" "}
 							<span className="bg-clip-text text-transparent font-black bg-gradient-to-r from-blue-400 to-red-400">
 								20+ academic disciplines
 							</span>{" "}
 						</h1>
-						<p className="tracking-[.0ch] max-sm:text-[1rem] w-[400px] max-sm:w-full bg-gradient-to-l from-[rgb(180,180,180)] to-[rgb(250,250,250)] text-transparent bg-clip-text mt-2 text-left">
+						<p className="tracking-[.0ch] max-sm:text-[.91rem] w-[400px] max-sm:w-full bg-gradient-to-l from-[rgb(180,180,180)] to-[rgb(250,250,250)] text-transparent bg-clip-text mt-2 text-left">
 							Test your knowledge by taking quizes from multiple academic field
 							of studies.
 						</p>
