@@ -60,7 +60,7 @@ const Content = () => {
 
 	return (
 		<>
-			<div className="flex justify-center h-full px-4 items-center">
+			<div className="flex justify-center h-[75dvh] px-4 items-center">
 				{!modeTransitionState.isCompleted ? (
 					<article className="quiz-container mb-[80px] w-[400px]">
 						{!modeTransitionState.isViewScoreMode && (

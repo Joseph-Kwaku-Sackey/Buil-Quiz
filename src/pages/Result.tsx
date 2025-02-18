@@ -6,7 +6,7 @@ import resultStatusProceedBtn from "../assets/img/next-arrow.svg";
 import { useParams} from "react-router-dom";
 import { DataType } from "../utilities/DataFetches";
 import { funcReset } from "../utilities/CommonFunc";
-// import { LoaderSub } from "../components/Loader";
+import Confetti from "react-confetti"
 
 type resultStateType = {
 	averageScore: number;
@@ -53,8 +53,9 @@ const Result = () => {
 				if (initialCountState === globalQuizValueStatusState.finalScore) {
 					clearInterval(intervalId);
 				}
-			}``
+			}
 		}, 0);
+
 	}, []);
 
 	const handleResultProceedClick = () => {
@@ -139,8 +140,13 @@ const Result = () => {
 		}
 	}, [resultState.viewSolution]);
 
+	
 	return (
 		<>
+		{globalQuizValueStatusState.finalScore >80?<Confetti
+			width={window.innerWidth}
+			height={window.innerHeight}
+		/>:null}
 			<main className="mb-8">
 				<section className="flex justify-center ">
 					<div className=" flex flex-col items-center">

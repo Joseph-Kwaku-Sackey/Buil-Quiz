@@ -13,7 +13,7 @@ const Layout = () => {
 				<header className="h-[50px]">
 					<Header />
 				</header>
-				<main className="flex-1 flex gap-5 flex-col">
+				<main className="flex-1 flex flex-col">
 					{location.pathname !== "/" && <BackBtn />}
 					<Suspense fallback={<Loader />}>
 						<Outlet />

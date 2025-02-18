@@ -16,7 +16,7 @@ const BackBtn = () => {
 	return (
 		<div
 			onClick={handleBackClick}
-			className=" flex items-center h-[50px] w-full ">
+			className=" flex items-center h-[70px] w-full ">
 			<div className="rotate-[180deg] relative ml-8 max-sm:ml-3">
 				<button className=" px-2 py-2 rounded-full">
 					<img
