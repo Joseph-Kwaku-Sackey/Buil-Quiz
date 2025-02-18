@@ -143,7 +143,7 @@ const Result = () => {
 	
 	return (
 		<>
-		{globalQuizValueStatusState.finalScore >80?<Confetti
+		{globalQuizValueStatusState.finalScore >=80?<Confetti
 			width={window.innerWidth}
 			height={window.innerHeight}
 		/>:null}
